@@ -1,19 +1,28 @@
-services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "8080:80"
-    volumes:
-      - .:/var/www/html
-      - ./bedrock.conf:/etc/nginx/conf.d/default.conf
-    container_name: bedrock_app
-    restart: unless-stopped
-    depends_on:
-      - php-fpm
+# services:
+#   nginx:
+#     image: nginx:stable-alpine
+#     ports:
+#       - "80:80"
+#     volumes:
+#       - ./docker-resources/nginx/default.conf:/etc/nginx/conf.d/default.conf
+#       - .:/var/www/html
+#     depends_on:
+#       - php-fpm
 
-  php-fpm:
-    image: php:8.3-fpm
+#   php-fpm:
+#     build:
+#       target: php
+#       context: .
+#       dockerfile: Dockerfile
+#     volumes:
+#       - .:/var/www/html
+
+version: '3.9'
+
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - '8080:80'
     volumes:
-      - .:/var/www/html
+      - ./src:/var/www/html

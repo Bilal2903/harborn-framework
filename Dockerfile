@@ -87,7 +87,7 @@ FROM php:8.2-fpm-alpine AS php
 
 RUN apk add --no-cache --update \
     libzip-dev \
-    zip
+    zip 
 
 RUN docker-php-ext-install pdo pdo_mysql zip
 

@@ -14,7 +14,7 @@ FROM php:8.2-fpm-alpine AS php
 RUN apk update && apk upgrade && apk add --no-cache \
     git \
     unzip \
-    curl \
+    curl \ 
     libzip-dev \
     zlib-dev \
     libpng-dev \

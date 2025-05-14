@@ -39,17 +39,20 @@ RUN docker-php-ext-install -j$(nproc) \
 # Install mysqli extension
 RUN docker-php-ext-install pdo pdo_mysql zip
 
+# Copy the composer executable from the official composer image
+COPY --from=composer:2.6.6 /usr/bin/composer /usr/bin/composer
+
+# Make the composer executable available in the PATH
+ENV PATH="/usr/bin:$PATH"
+
 # Install Composer globally
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-# Install Playwright
-RUN npm i -g playwright && playwright install
 
 # Add global Composer bin to PATH
 ENV PATH="${PATH}:/root/.composer/vendor/bin"
 
-# Enable Imagick
-RUN pecl install imagick && docker-php-ext-enable imagick
+# # Enable Imagick
+# RUN pecl install imagick && docker-php-ext-enable imagick
 
 # Permissions
 RUN chown -R www-data:www-data /var/www/html
@@ -58,3 +61,18 @@ RUN chown -R www-data:www-data /var/www/html
 RUN apk del --purge $(apk info --installed | grep "*-dev$") && rm -rf /var/cache/apk/*
 
 WORKDIR /var/www/html
+
+# Copy your composer.json and composer.lock files
+# Copy these before the rest of your application code to leverage Docker's build cache
+COPY composer.json composer.lock ./
+
+# Run composer install to install dependencies
+# --no-dev: Skips installing require-dev dependencies (good for production)
+# --optimize-autoloader: Optimizes the autoloader for faster loading
+# --no-scripts: Prevents execution of scripts defined in composer.json during install
+RUN composer install --no-dev --optimize-autoloader --no-scripts
+
+EXPOSE 8080
+
+# Start the PHP-FPM server.  This is the correct CMD for this Dockerfile.
+ENTRYPOINT ["php-fpm", "-F"]

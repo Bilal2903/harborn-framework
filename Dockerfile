@@ -37,7 +37,7 @@ RUN docker-php-ext-install -j$(nproc) \
     bcmath
 
 # Install mysqli extension
-RUN docker-php-ext-install pdo pdo_mysql zip
+RUN docker-php-ext-install pdo pdo_mysql mysqli zip
 
 # Copy the composer executable from the official composer image
 COPY --from=composer:2.6.6 /usr/bin/composer /usr/bin/composer

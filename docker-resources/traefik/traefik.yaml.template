@@ -1,0 +1,28 @@
+global:
+  sendAnonymousUsage: false
+
+api:
+  dashboard: true
+  insecure: true
+
+providers:
+  docker:
+    endpoint: "unix:///var/run/docker.sock"
+    watch: true
+    exposedByDefault: false
+    defaultRule: "Host(`${COMPOSE_PROJECT_NAME}-{{ index .Labels \"com.docker.compose.service\"}}${TRAEFIK_HOST}`)"
+    constraints: "Label(`com.docker.compose.project`, `${COMPOSE_PROJECT_NAME}`)"
+
+  file:
+    filename: /etc/traefik/dynamic.yaml
+    watch: true
+
+log:
+  level: INFO
+  format: common
+
+entryPoints:
+  http:
+    address: ":80"
+  https:
+    address: ":443"

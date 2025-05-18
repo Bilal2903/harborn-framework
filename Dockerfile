@@ -9,6 +9,15 @@
 #     pnpm install && \
 #     pnpm run build; fi
 
+# syntax=docker/dockerfile:1.4
+ARG TRAEFIK_VERSION=v2.7
+FROM traefik:${TRAEFIK_VERSION} AS traefik
+
+RUN apk add --update libintl && apk add --virtual build_deps gettext
+COPY docker-resources/traefik/traefik.yaml.template /etc/traefik/traefik.yaml.template
+
+CMD /bin/sh -c "envsubst < /etc/traefik/traefik.yaml.template > /etc/traefik/traefik.yaml && /usr/local/bin/traefik"
+
 FROM php:8.2-fpm-alpine AS php
 
 RUN apk update && apk upgrade && apk add --no-cache \

@@ -60,6 +60,14 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Add global Composer bin to PATH
 ENV PATH="${PATH}:/root/.composer/vendor/bin"
 
+# Install WP-CLI
+RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+RUN chmod +x wp-cli.phar
+RUN mv wp-cli.phar /usr/local/bin/wp
+
+# Verify WP-CLI installation (optional, but good for debugging)
+RUN wp --info
+
 # # Enable Imagick
 # RUN pecl install imagick && docker-php-ext-enable imagick
 

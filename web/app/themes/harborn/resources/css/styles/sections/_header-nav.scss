@@ -1,0 +1,72 @@
+@use '../harborn-style-guide/harborn-typography' as typography;
+@use '../harborn-style-guide/harborn-colorpalet' as color;
+
+.nav-primary {
+  flex-grow: 1;
+  display: flex;
+  justify-content: end;
+  margin: 0 2rem;
+}
+
+.nav-primary .nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 3rem;
+}
+
+.nav-primary .nav li a {
+  text-decoration: none;
+  @include typography.harborn-typography("body-text");
+  color: color.$color-black;
+  font-size: 14pt;
+  font-weight: typography.$font-weight-space-grotesk-regular;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+.nav-primary .nav li a:hover,
+.nav-primary .nav {
+  opacity: 1;
+  color: color.$color-harborn-lime;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+
+@media (max-width: 1100px) {
+  .nav-primary .nav {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav-primary,
+  .header-actions {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .nav-primary {
+    justify-content: center;
+    margin: 1rem 0;
+  }
+
+  .header-actions {
+    justify-content: center;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .header-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

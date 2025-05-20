@@ -43,7 +43,7 @@ $font-weight-space-grotesk-semibold: 600;
     line-height: 13.5pt;
     font-weight: $font-weight-space-grotesk-regular;
   } @else {
-    // Default or fallback style if $type is not recognized
+    // fallback style
     font-family: $font-family-space-grotesk, $font-family-space-grotesk-fallback;
     font-size: 16px;
     line-height: 1.5;

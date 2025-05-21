@@ -15,10 +15,6 @@
     <div id="app">
       @include('sections.header')
 
-      @hasSection('hero')
-        @yield('hero')
-      @endif
-
       <main id="main" class="main">
         @yield('content')
       </main>

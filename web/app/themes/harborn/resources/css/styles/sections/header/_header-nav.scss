@@ -5,32 +5,30 @@
   flex-grow: 1;
   display: flex;
   justify-content: end;
-  margin: 0 2rem;
-}
+  margin: 0 3rem;
 
-.nav-primary .nav {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  gap: 3rem;
-}
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 3rem;
+  }
 
-.nav-primary .nav li a {
-  text-decoration: none;
-  @include typography.harborn-typography("body-text");
-  color: color.$color-black;
-  font-size: 14pt;
-  font-weight: typography.$font-weight-space-grotesk-regular;
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
-  white-space: nowrap;
-}
+  .menu-item > a {
+    text-decoration: none;
+    @include typography.harborn-typography("body-text");
+    color: color.$color-black;
+    font-size: 16pt;
+    font-weight: typography.$font-weight-space-grotesk-regular;
+    opacity: 1;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+  }
 
-.nav-primary .nav li a:hover,
-.nav-primary .nav {
-  opacity: 1;
-  color: color.$color-harborn-lime;
+  .menu-item > a:hover {
+    color: color.$color-harborn-lime;
+  }
 }
 
 .header-actions {
@@ -39,10 +37,11 @@
   gap: 1.5rem;
 }
 
-
 @media (max-width: 1100px) {
-  .nav-primary .nav {
-    gap: 1.5rem;
+  .nav-primary {
+    &__list {
+      gap: 1.5rem;
+    }
   }
 }
 

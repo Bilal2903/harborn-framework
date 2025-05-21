@@ -4,7 +4,7 @@
 .language-switcher {
   position: relative;
   border: 1px solid color.$color-black;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 1.4rem 0.5rem;
   background-color: transparent;
   cursor: pointer;
@@ -48,7 +48,7 @@
     background-color: rgba(color.$color-white, 0.9);
     border: 1px solid color.$color-black;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: rgba(color.$color-black, 0.2);
     display: none;
     z-index: 1000;
     overflow: hidden;
@@ -73,7 +73,8 @@
     @include typography.harborn-typography("body-text");
     font-size: 14pt;
     font-weight: typography.$font-weight-space-grotesk-regular;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.5s ease;
+  
 
     &:hover {
       background-color: rgba(color.$color-white, 0.2);

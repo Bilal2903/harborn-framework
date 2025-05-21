@@ -1,5 +1,5 @@
-@use '../harborn-style-guide/harborn-typography' as typography;
-@use '../harborn-style-guide/harborn-colorpalet' as color;
+@use '../../harborn-style-guide/' as typography;
+@use '../../harborn-style-guide/harborn-colorpalet' as color;
 
 .logo {
   display: flex;

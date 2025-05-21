@@ -8,7 +8,7 @@
 }
 
 .footer__container {
-  max-width: 1200px;
+  max-width: 1350px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -30,7 +30,7 @@
   @include typography.harborn-typography("body-text");
   white-space: nowrap;
   &:hover {
-    text-decoration: underline;
+     color: color.$color-harborn-lime;
   }
 }
 

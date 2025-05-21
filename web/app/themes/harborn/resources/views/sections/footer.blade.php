@@ -3,16 +3,16 @@
     <nav class="footer__nav footer-nav">
       <ul class="footer-nav__list">
         <li class="footer-nav__item">
-          <a href="#" class="footer-nav__link">Cookies</a>
+          <a href="https://www.harborn.com/en/cookies" class="footer-nav__link">Cookies</a>
         </li>
         <li class="footer-nav__item">
-          <a href="#" class="footer-nav__link">Algemene voorwaarden</a>
+          <a href="https://www.harborn.com/en/terms-agreements" class="footer-nav__link">Terms & Conditions</a>
         </li>
         <li class="footer-nav__item">
-          <a href="#" class="footer-nav__link">Privacy verklaring</a>
+          <a href="https://www.harborn.com/en/privacy-statement" class="footer-nav__link">Privacy statement</a>
         </li>
         <li class="footer-nav__item">
-          <a href="#" class="footer-nav__link">Support</a>
+          <a href="https://harborn.atlassian.net/servicedesk/customer/portals" class="footer-nav__link">Support</a>
         </li>
       </ul>
     </nav>
@@ -33,7 +33,7 @@
           </a>
         </li>
         <li class="social-links__item">
-          <a href="https://www.youtube.com/channel/UC5M7JBSv7rOp3YJUCeXgVtw" class="social-links__link" aria-label="YouTube">
+          <a href="http://www.youtube.com/@harborn.digital" class="social-links__link" aria-label="YouTube">
             <svg class="social-links__icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path d="M21.996 7.502C21.846 6.842 21.579 6.239 21.193 5.733C20.807 5.228 20.311 4.821 19.742 4.542C19.173 4.264 18.544 4.125 17.892 4.125C16.942 4.125 12.001 4.125 12.001 4.125C12.001 4.125 7.061 4.125 6.109 4.125C5.457 4.125 4.828 4.264 4.259 4.542C3.691 4.821 3.195 5.228 2.809 5.733C2.423 6.239 2.156 6.842 2.006 7.502C1.729 8.718 1.729 12.001 1.729 12.001C1.729 12.001 1.729 15.284 2.006 16.499C2.156 17.159 2.423 17.762 2.809 18.268C3.195 18.773 3.691 19.18 4.259 19.458C4.828 19.736 5.457 19.875 6.109 19.875C7.061 19.875 12.001 19.875 12.001 19.875C12.001 19.875 16.942 19.875 17.892 19.875C18.544 19.875 19.173 19.736 19.742 19.458C20.311 19.18 20.807 18.773 21.193 18.268C21.579 17.762 21.846 17.159 21.996 16.499C22.273 15.284 22.273 12.001 22.273 12.001C22.273 12.001 22.273 8.718 21.996 7.502ZM9.704 15.001V8.999L15.304 12.001L9.704 15.001Z"/>
             </svg>

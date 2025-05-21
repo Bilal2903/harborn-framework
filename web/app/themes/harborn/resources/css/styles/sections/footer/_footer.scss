@@ -1,0 +1,78 @@
+@use '../../harborn-style-guide/harborn-typography' as typography;
+@use '../../harborn-style-guide/harborn-colorpalet' as color;
+
+.footer {
+  background-color: color.$color-harborn-dark;
+  color: color.$color-white;
+  padding: 1.5rem 0;
+}
+
+.footer__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.footer-nav__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-nav__link {
+  color: inherit;
+  text-decoration: none;
+  @include typography.harborn-typography("body-text");
+  white-space: nowrap;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.social-links__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 3rem;
+}
+
+.social-links__link {
+  color: inherit;
+  display: block;
+  &:hover {
+    opacity: 0.8;
+  }
+  &[aria-label="Instagram"] .social-links__icon {
+    stroke: currentColor;
+    fill: none;
+  }
+}
+
+.social-links__icon {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5px;
+}
+
+@media (max-width: 768px) {
+  .footer__container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-nav__list {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .social-links__list {
+    justify-content: center;
+  }
+}

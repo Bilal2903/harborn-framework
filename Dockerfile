@@ -71,6 +71,10 @@ RUN wp --info
 # # Enable Imagick
 # RUN pecl install imagick && docker-php-ext-enable imagick
 
+# Set PHP upload and post max sizes
+COPY docker-resources/upload_max_filesize.ini $PHP_INI_DIR/conf.d/
+COPY docker-resources/post_max_size.ini $PHP_INI_DIR/conf.d/
+
 # Permissions
 RUN chown -R www-data:www-data /var/www/html
 

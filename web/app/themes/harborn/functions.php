@@ -60,3 +60,28 @@ collect(['setup', 'filters'])
             );
         }
     });
+
+
+/**
+ * Register all ACF Blocks
+ */
+function my_acf_blocks_init() {
+    if ( function_exists( 'acf_register_block_type' ) ) {
+        acf_register_block_type( array(
+            'name'              => 'hero-block',
+            'title'             => __( 'Hero Block' ),
+            'description'       => __( 'A customizable section for the top of your page.' ),
+            'render_template'   => 'blocks/hero-block/hero-block.php',
+            'category'          => 'layout',
+            'icon'              => 'align-wide',
+            'keywords'          => array( 'hero', 'banner', 'introduction' ),
+            'supports'          => array(
+                'align'         => true,
+                'mode'          => false,
+                'jsx'           => true,
+            ),
+        ) );
+    }
+}
+add_action( 'acf/init', 'my_acf_blocks_init' );
+?>

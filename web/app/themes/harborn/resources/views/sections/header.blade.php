@@ -1,7 +1,7 @@
 <header class="banner">
   <div class="container">
     <a class="logo" href="{{ home_url('/') }}">
-      <img src="{{ get_theme_file_uri('resources/images/logo-dark.svg') }}" alt="{{ $siteName }} logo">
+      <img src="{{ get_theme_file_uri('resources/images/logo-light.svg') }}" alt="{{ $siteName }} logo">
     </a>
 
     <nav class="nav-primary" aria-label="{{ wp_get_nav_menu_name('primary_navigation') }}">

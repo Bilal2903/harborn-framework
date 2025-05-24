@@ -1,0 +1,191 @@
+@use '../harborn-style-guide/harborn-typography' as typography;
+@use '../harborn-style-guide/harborn-colorpalet' as color;
+
+.hero-block {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: color.$color-white;
+  padding: 0;
+  text-align: left;
+  background: none;
+  overflow: hidden;
+
+  &__background {
+    position: absolute;
+    top: -1px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 1px);
+    background-size: cover;
+    background-position: center center;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(color.$color-black, 0.4) 0%, rgba(color.$color-black, 0) 50%, rgba(color.$color-black, 0.4) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .banner {
+    z-index: 2;
+    width: 100%;
+    padding: 1.5rem 32px;
+    box-sizing: border-box;
+  }
+
+  &__inner-content {
+    max-height: 1200px;
+    max-width: 1520px;
+    margin: 20% auto 0 auto;
+    width: 100%;
+    padding: 0 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+    position: relative;
+    flex-grow: 1;
+    padding-top: 100px;
+  }
+
+  &__text-content {
+    flex: 1;
+    display: flex;
+    max-width: 600px;
+    flex-direction: column;
+  }
+
+  &__heading {
+    @include typography.harborn-typography("heading-dm-serif");
+    color: color.$color-white;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    margin-bottom: 10px;
+  }
+
+  &__subheading {
+    @include typography.harborn-typography("subheading");
+    color: color.$color-white;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+  }
+
+  &__button-wrapper {
+    margin-left: 40px;
+    flex-shrink: 0;
+  }
+
+  &__button {
+    background-color: color.$color-harborn-dark;
+    color: color.$color-white;
+    padding: 16px 36px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: 2px solid transparent;
+    font-family: typography.$font-family-dm-serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+
+    &:hover {
+      background-color: color.$color-harborn-lime;
+      color: color.$color-black;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: color.$color-white;
+    }
+  }
+
+  &.hero-block--alt-style {
+    background-color: color.$color-harborn-lightgrey;
+    color: color.$color-harborn-darkblue;
+    background-image: none;
+
+    .hero-block__heading {
+      color: color.$color-harborn-darkblue;
+      text-shadow: none;
+    }
+
+    .hero-block__subheading {
+      color: color.$color-harborn-darkblue;
+      text-shadow: none;
+    }
+
+    .hero-block__button {
+      background-color: color.$color-harborn-darkblue;
+      color: color.$color-white;
+
+      &:hover {
+        background-color: color.$color-harborn-dark;
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    min-height: 80vh;
+
+    &__inner-content {
+      max-width: 900px;
+      padding: 0 20px;
+      padding-top: 80px;
+    }
+
+    &__button-wrapper {
+      margin-left: 20px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    min-height: 60vh;
+
+    &__inner-content {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-top: 60px;
+    }
+
+    &__button-wrapper {
+      margin-top: 20px;
+      margin-left: 0;
+      width: 100%;
+      text-align: left;
+    }
+
+    .hero-block__heading {
+      @include typography.harborn-typography("heading-space-grotesk");
+    }
+
+    .hero-block__subheading {
+      @include typography.harborn-typography("intro");
+    }
+  }
+
+  @media (max-width: 480px) {
+    min-height: 40vh;
+
+    .hero-block__heading {
+      @include typography.harborn-typography("subheading");
+    }
+  }
+}

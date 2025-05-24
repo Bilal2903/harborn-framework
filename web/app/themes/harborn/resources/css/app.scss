@@ -1,9 +1,4 @@
-// @use 'styles/sections/hero';
-@use 'styles/sections/header/header';
-@use 'styles/sections/header/header-logo';
-@use 'styles/sections/header/header-nav';
-@use 'styles/sections/header/header-language-switcher';
-@use 'styles/sections/header/header-searchbar';
-@use 'styles/harborn-style-guide/harborn-colorpalet';
-@use 'styles/harborn-style-guide/harborn-typography';
-@use 'styles/sections/footer/footer';
+@use 'styles/harborn-style-guide';
+@use 'styles/sections/headers';
+@use 'styles/sections/footer';
+@use 'styles/blocks';

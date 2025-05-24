@@ -5,7 +5,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  border: 2px solid rgba(color.$color-black, 0.4);
+  border: 2px solid rgba(color.$color-white, 0.4);
   border-radius: 15px;
   padding: 0.8rem 1rem;
   background-color: rgba(color.$color-white, 0.2);
@@ -16,20 +16,20 @@
   background: none;
   border: none;
   outline: none;
-  color: color.$color-black;
+  color: color.$color-white;
   @include typography.harborn-typography("body-text");
   font-size: 12pt;
   padding: 5px;
   flex-grow: 1;
   &::placeholder {
-    color: rgba(color.$color-black, 0.6);
+    color: rgba(color.$color-white, 0.6);
   }
 }
 
 .search-bar .search-submit {
   background: none;
   border: none;
-  color: color.$color-white;
+  color: color.$color-harborn-lime;
   font-size: 1rem;
   cursor: pointer;
   padding: 0;

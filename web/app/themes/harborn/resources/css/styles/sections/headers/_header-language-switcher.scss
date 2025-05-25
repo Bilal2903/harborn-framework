@@ -43,10 +43,12 @@
     margin: 0;
     padding: 0;
     position: absolute;
-    top: calc(100% + 5px);
-    left: 0;
-    min-width: 100%;
-    background-color: rgba(color.$color-white, 0.9);
+    top: calc(100% + 15px);
+    left: 50%;
+    min-width: 80px;
+    width: 80px;
+    transform: translateX(-50%);
+    background-color: rgba(color.$color-harborn-darkblue, 0.9);
     border: 1px solid color.$color-black;
     border-radius: 8px;
     box-shadow: rgba(color.$color-black, 0.2);
@@ -78,7 +80,8 @@
   
 
     &:hover {
-      background-color: rgba(color.$color-white, 0.2);
+      background-color: color.$color-harborn-lime;
+      color: color.$color-black;
     }
   }
 
@@ -102,6 +105,7 @@
 
 .language-switcher:hover .language-switcher__item--current::after {
   transform: rotate(180deg);
+  border-top: 4px solid color.$color-harborn-lime;
 }
 
 .sr-only {

@@ -46,7 +46,9 @@ $button_link = get_field('hero_button_link');
     <div class="hero-block__inner-content">
         <div class="hero-block__text-content">
             <?php if( $heading ): ?>
-                <h1 class="hero-block__heading"><?php echo esc_html($heading); ?></h1>
+                <h1 class="hero-block__heading">
+                    <?php echo str_replace('digital', '<span class="hero-block__highlight-word">digital</span>', esc_html($heading)); ?>
+                </h1>
             <?php endif; ?>
 
             <?php if( $subheading ): ?>

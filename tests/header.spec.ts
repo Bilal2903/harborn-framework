@@ -1,7 +1,6 @@
 import { test, expect } from '@playwright/test';
 
 test('Header is visible and contains logo, nav, and language switcher', async ({ page }) => {
-  // Change this to your local dev URL if needed
   await page.goto('http://harborn-framework.local.harborn.com/');
 
   // Check header exists

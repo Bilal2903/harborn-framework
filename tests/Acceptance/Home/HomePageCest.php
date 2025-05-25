@@ -5,29 +5,27 @@ declare(strict_types=1);
 namespace Tests\Acceptance\Home;
 
 use Tests\Support\AcceptanceTester;
-use Tests\Support\HeaderHelper;
-use Tests\Support\Helper\FooterHelper;
 
 final class HomePageCest
 {
     public function testHeaderElements(AcceptanceTester $I): void
     {
         $I->amOnPage('/');
-        $headerHelper = new HeaderHelper();
-        $headerHelper->seeHeaderElements($I);
+        $I->seeHeaderElements();
     }
 
     public function tryToSeeHeroSection(AcceptanceTester $I): void
     {
         $I->amOnPage('/');
-        $heroHelper = new HeroHelper();
-        $heroHelper->tryToSeeHeroSection($I);
+        $I->seeElement('.hero-block');
+        $I->seeElement('.hero-block__heading');
+        $I->seeElement('.hero-block__subheading');
+        $I->seeElement('.hero-block__button');
     }
 
     public function testFooterElements(AcceptanceTester $I): void
     {
         $I->amOnPage('/');
-        $footerHelper = new FooterHelper();
-        $footerHelper->seeFooterElements($I);
+        $I->seeFooterElements();
     }
 }

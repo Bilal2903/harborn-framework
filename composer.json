@@ -45,7 +45,8 @@
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",
-    "laravel/pint": "^1.18"
+    "laravel/pint": "^1.18",
+    "codeception/codeception": "^5.3"
   },
   "config": {
     "optimize-autoloader": true,

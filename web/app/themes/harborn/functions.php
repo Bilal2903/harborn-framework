@@ -61,7 +61,6 @@ collect(['setup', 'filters'])
         }
     });
 
-
 /**
  * Register all ACF Blocks
  */
@@ -75,6 +74,20 @@ function my_acf_blocks_init() {
             'category'          => 'layout',
             'icon'              => 'align-wide',
             'keywords'          => array( 'hero', 'banner', 'introduction' ),
+            'supports'          => array(
+                'align'         => true,
+                'mode'          => false,
+                'jsx'           => true,
+            ),
+        ) );
+        acf_register_block_type( array(
+            'name'              => 'carousel',
+            'title'             => __( 'Carousel' ),
+            'description'       => __( 'Een carousel met afbeeldingen of content.' ),
+            'render_template'   => 'blocks/carousel/carousel.php',
+            'category'          => 'formatting',
+            'icon'              => 'images-alt2',
+            'keywords'          => array( 'carousel', 'slider', 'afbeeldingen' ),
             'supports'          => array(
                 'align'         => true,
                 'mode'          => false,

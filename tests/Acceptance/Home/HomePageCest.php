@@ -46,12 +46,6 @@ final class HomePageCest
         $I->seeLink('meer werk', '/projecten');
     }
 
-    // public function testCarouselProjectCardCount(AcceptanceTester $I): void
-    // {
-    //     $I->amOnPage('/');
-    //     $I->seeNumberOfElements('.project-card', [1, null]); 
-    // }
-
     public function testCarouselSwiperJsLoaded(AcceptanceTester $I): void
     {
         $I->amOnPage('/');

@@ -23,11 +23,10 @@ if( !empty($block['align']) ) {
     $className .= ' align' . $block['align'];
 }
 
-// Haal de projecten op
 $args = array(
-    'post_type'      => 'project', // De custom post type die je hebt geregistreerd
-    'posts_per_page' => -1,        // Haal alle projecten op
-    'post_status'    => 'publish', // Alleen gepubliceerde projecten
+    'post_type'      => 'project',
+    'posts_per_page' => -1,        
+    'post_status'    => 'publish', 
 );
 $projects_query = new WP_Query( $args );
 
@@ -42,7 +41,7 @@ if ( $projects_query->have_posts() ) : ?>
         <div class="carousel-block__container">
             <div class="carousel-block__swiper">
                 <?php while ( $projects_query->have_posts() ) : $projects_query->the_post();
-                    $image_url = get_the_post_thumbnail_url(get_the_ID(), 'full'); // Of een andere gewenste grootte
+                    $image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
                     $excerpt = get_the_excerpt();
                     $title = get_the_title();
                     $permalink = get_permalink();
@@ -61,13 +60,12 @@ if ( $projects_query->have_posts() ) : ?>
                         </div>
                     </a>
                 <?php endwhile; ?>
-                <?php wp_reset_postdata(); // Reset de post data na de loop ?>
+                <?php wp_reset_postdata(); ?>
             </div>
         </div>
     </div>
 <?php
 endif;
-// Als er geen projecten zijn, toon dan een bericht of niets
 if ( ! $projects_query->have_posts() && is_user_logged_in() && $is_preview ) {
     echo '<p style="text-align: center; padding: 20px;">Er zijn nog geen projecten gevonden. Maak nieuwe projecten aan om ze hier te tonen.</p>';
 }

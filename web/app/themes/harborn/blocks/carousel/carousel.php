@@ -39,30 +39,32 @@ if ( $projects_query->have_posts() ) : ?>
             </a>
         </div>
         <div class="carousel-block__container">
-            <div class="carousel-block__swiper">
+            <swiper-container class="mySwiper" watch-slides-progress="true" slides-per-view="3">
                 <?php while ( $projects_query->have_posts() ) : $projects_query->the_post();
                     $image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
                     $excerpt = get_the_excerpt();
                     $title = get_the_title();
                     $permalink = get_permalink();
-                    ?>
-                    <a href="<?php echo esc_url($permalink); ?>" class="project-card">
-                        <?php if ($image_url): ?>
-                            <div class="project-card__image" style="background-image: url('<?php echo esc_url($image_url); ?>');"></div>
-                        <?php endif; ?>
-                        <div class="project-card__overlay"></div>
-                        <div class="project-card__content">
-                            <h3 class="project-card__title"><?php echo esc_html($title); ?></h3>
-                            <?php if ($excerpt): ?>
-                                <p class="project-card__excerpt"><?php echo esc_html($excerpt); ?></p>
+                ?>
+                    <swiper-slide>
+                        <div class="project-card">
+                            <?php if ($image_url): ?>
+                                <div class="project-card__image" style="background-image: url('<?php echo esc_url($image_url); ?>');"></div>
                             <?php endif; ?>
-                            <span class="project-card__drag-label">klik en schuif</span>
-                        </div>
-                    </a>
+                            <div class="project-card__overlay"></div>
+                            <div class="project-card__content">
+                                <h3 class="project-card__title"><?php echo esc_html($title); ?></h3>
+                                <?php if ($excerpt): ?>
+                                    <p class="project-card__excerpt"><?php echo esc_html($excerpt); ?></p>
+                                <?php endif; ?>
+                            </div>
+                         </div>
+                    </swiper-slide>
                 <?php endwhile; ?>
                 <?php wp_reset_postdata(); ?>
-            </div>
+            </swiper-container>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
     </div>
 <?php
 endif;

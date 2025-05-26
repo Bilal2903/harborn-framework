@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function () {
       },
     });
 
-    // Verbeterde drag-fix: blokkeer link-click alleen als Swiper echt geswiped heeft
     let isDragging = false;
     swiper.on('slideChangeTransitionStart', function () {
       isDragging = true;

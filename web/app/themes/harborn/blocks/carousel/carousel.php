@@ -41,7 +41,7 @@ if ( $projects_query->have_posts() ) : ?>
             </div>
         </div>
         <div class="carousel-block__container">
-            <swiper-container class="mySwiper" watch-slides-progress="true" slides-per-view="3">
+            <swiper-container class="mySwiper" watch-slides-progress="true" loop="true" slides-per-view="3">
                 <?php while ( $projects_query->have_posts() ) : $projects_query->the_post();
                     $image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
                     $excerpt = get_the_excerpt();

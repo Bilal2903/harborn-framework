@@ -17,6 +17,7 @@
 
       <main id="main" class="main">
         @yield('content')
+        @include('sections.work-overview')
       </main>
 
       @hasSection('sidebar')

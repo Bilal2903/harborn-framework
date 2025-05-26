@@ -84,4 +84,8 @@ function my_acf_blocks_init() {
     }
 }
 add_action( 'acf/init', 'my_acf_blocks_init' );
+
+add_action('after_setup_theme', function () {
+    app()->register(\App\Providers\ProjectPostTypeServiceProvider::class);
+});
 ?>

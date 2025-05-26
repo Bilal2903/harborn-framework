@@ -34,9 +34,11 @@ if ( $projects_query->have_posts() ) : ?>
     <div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
         <div class="carousel-block__header">
             <h2 class="carousel-block__title">Werk</h2>
-            <a href="/projecten" class="more-work-link">
-                meer werk <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 0L6.59 1.41L12.17 7H0V9H12.17L6.59 14.59L8 16L16 8L8 0Z" fill="currentColor"/></svg>
-            </a>
+            <div class="more-work-link-bg">
+                <a href="/projecten" class="more-work-link">
+                    meer werk <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 0L6.59 1.41L12.17 7H0V9H12.17L6.59 14.59L8 16L16 8L8 0Z" fill="currentColor"/></svg>
+                </a>
+            </div>
         </div>
         <div class="carousel-block__container">
             <swiper-container class="mySwiper" watch-slides-progress="true" slides-per-view="3">

@@ -45,6 +45,12 @@
   }
 }
 
+.search-bar button,
+.wp-block-search__button,
+.search-form .search-submit {
+  display: none !important;
+}
+
 @media (max-width: 500px) {
   .search-bar {
     width: 100%;

@@ -35,7 +35,7 @@ if ( $projects_query->have_posts() ) : ?>
         <div class="carousel-block__header">
             <h2 class="carousel-block__title">Werk</h2>
             <div class="more-work-link-bg">
-                <a href="/projecten" class="more-work-link">
+                <a href="/projects" class="more-work-link">
                     meer werk <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 0L6.59 1.41L12.17 7H0V9H12.17L6.59 14.59L8 16L16 8L8 0Z" fill="currentColor"/></svg>
                 </a>
             </div>
@@ -49,7 +49,7 @@ if ( $projects_query->have_posts() ) : ?>
                     $permalink = get_permalink();
                 ?>
                     <swiper-slide>
-                        <div class="project-card">
+                        <a href="<?php echo esc_url($permalink); ?>" class="project-card" tabindex="0">
                             <?php if ($image_url): ?>
                                 <div class="project-card__image" style="background-image: url('<?php echo esc_url($image_url); ?>');"></div>
                             <?php endif; ?>
@@ -60,7 +60,7 @@ if ( $projects_query->have_posts() ) : ?>
                                     <p class="project-card__excerpt"><?php echo esc_html($excerpt); ?></p>
                                 <?php endif; ?>
                             </div>
-                         </div>
+                        </a>
                     </swiper-slide>
                 <?php endwhile; ?>
                 <?php wp_reset_postdata(); ?>

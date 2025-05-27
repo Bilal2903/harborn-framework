@@ -1,41 +1,34 @@
-import Swiper, { FreeMode, Mousewheel } from 'swiper';
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/mousewheel';
-
 document.addEventListener('DOMContentLoaded', function () {
-  const swiperElement = document.querySelector('.carousel-block__swiper.swiper');
+  // Custom cursor for carousel
+  const carousel = document.querySelector('swiper-container.mySwiper');
+  if (carousel) {
+    // Create the cursor
+    const cursor = document.createElement('div');
+    cursor.className = 'carousel-cursor';
+    cursor.innerHTML = '<span class="carousel-cursor__text">sleep<br>klik</span>';
+    document.body.appendChild(cursor);
 
-  if (swiperElement) {
-    Swiper.use([FreeMode, Mousewheel]);
-    const swiper = new Swiper(swiperElement, {
-      slidesPerView: 3,
-      spaceBetween: 30,
-      freeMode: true,
-      grabCursor: true,
-      mousewheel: true,
-      breakpoints: {
-        0: { slidesPerView: 1.1, spaceBetween: 10 },
-        768: { slidesPerView: 2.1, spaceBetween: 20 },
-        1024: { slidesPerView: 3, spaceBetween: 30 },
-      },
-    });
+    // Hide the cursor by default
+    cursor.style.display = 'none';
 
-    let isDragging = false;
-    swiper.on('slideChangeTransitionStart', function () {
-      isDragging = true;
+    // Use gsap.quickTo for x and y
+    const xTo = gsap.quickTo(cursor, 'x', { duration: 0.18, ease: 'power2.out' });
+    const yTo = gsap.quickTo(cursor, 'y', { duration: 0.18, ease: 'power2.out' });
+
+    // Mouse move handler
+    function moveCursor(e) {
+      xTo(e.clientX - cursor.offsetWidth / 2);
+      yTo(e.clientY - cursor.offsetHeight / 2);
+    }
+
+    // Show/hide cursor on enter/leave
+    carousel.addEventListener('mouseenter', () => {
+      cursor.style.display = 'flex';
+      document.addEventListener('mousemove', moveCursor);
     });
-    swiperElement.querySelectorAll('.project-card').forEach(link => {
-      link.addEventListener('click', function(e) {
-        if (isDragging) {
-          e.preventDefault();
-          e.stopImmediatePropagation();
-        }
-        isDragging = false;
-      });
-    });
-    swiper.on('touchEnd', function () {
-      setTimeout(() => { isDragging = false; }, 10);
+    carousel.addEventListener('mouseleave', () => {
+      cursor.style.display = 'none';
+      document.removeEventListener('mousemove', moveCursor);
     });
   }
 });

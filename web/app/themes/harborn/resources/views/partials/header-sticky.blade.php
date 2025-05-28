@@ -9,6 +9,11 @@
                 @endif
             </a>
         </div>
+
+        <div class="search-bar">
+            {!! get_search_form(false) !!}
+        </div>
+
         <button class="hamburger-toggle" aria-label="Open menu">
             <span></span>
             <span></span>

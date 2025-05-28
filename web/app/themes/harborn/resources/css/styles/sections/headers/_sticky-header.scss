@@ -136,13 +136,10 @@
         opacity: 0;
         transform: translateY(20px);
 
-        // Adjusted animation delays for the new logo element
-        &:nth-child(1) { animation-delay: 0.5s; } // Logo
-        &:nth-child(2) { animation-delay: 0.6s; } // Heading (Menu)
-        &:nth-child(3) { animation-delay: 0.7s; } // Nav
-        &:nth-child(4) { animation-delay: 0.8s; } // Footer text (if present)
+        &:nth-child(1) { animation-delay: 0.5s; }
+        &:nth-child(2) { animation-delay: 0.6s; }
+        &:nth-child(3) { animation-delay: 0.7s; }
       }
-
 
       .mega-nav-list li {
         animation: slideInFromBottomContent 0.6s cubic-bezier(.4,2.08,.55,.44) forwards;
@@ -237,17 +234,6 @@
   transform: translateX(100%);
   opacity: 0;
 
-  .logo { /* Styles for the logo within mega-menu-column-1 */
-    display: block;
-    margin-bottom: 2rem; // Increased margin to match image more closely
-
-    img {
-      max-height: 57px; // Adjusted to match the sticky header logo size for consistency
-      width: auto;
-      height: auto;
-    }
-  }
-
   .mega-menu-heading-menu {
     @include typography.harborn-typography("chapeau");
     color: color.$color-harborn-darkblue;
@@ -313,7 +299,7 @@
   opacity: 0;
   overflow: hidden;
 
-  .mega-menu-heading-socials, .mega-menu-heading-language, .mega-menu-heading-search {
+  .mega-menu-heading-socials, .mega-menu-heading-language, .mega-menu-heading-search { /* Added .mega-menu-heading-search */
     @include typography.harborn-typography("chapeau");
     color: color.$color-white;
     margin-bottom: 1.5rem;
@@ -366,7 +352,8 @@
     margin-top: 3rem;
     margin-bottom: 3rem;
     width: 100%;
-    display: block;
+    /* Removed display: none; to make the search bar visible */
+    display: block; /* Ensure it's displayed */
   }
 
   .mega-menu-search-bar {

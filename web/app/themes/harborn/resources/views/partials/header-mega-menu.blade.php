@@ -4,9 +4,6 @@
     
     <div class="mega-menu-content">
         <div class="mega-menu-grid">
-            <!-- <a class="logo" href="{{ home_url('/') }}">
-                <img src="{{ get_theme_file_uri('resources/images/logo-light.svg') }}" alt="{{ $siteName }} logo">
-            </a> -->
             {{-- Column 1: White Background - Navigation and Search --}}
             <div class="mega-menu-column-1">
                 <h3 class="mega-menu-heading-menu">Menu</h3>

@@ -112,4 +112,9 @@ function theme_gsap_script(){
     wp_enqueue_script( 'gsap-custom', get_template_directory_uri() . '/resources/js/carousel/carousel.js', array('gsap-js'), false, true );
 }
 add_action( 'wp_enqueue_scripts', 'theme_gsap_script' );
+
+// Mega Menu navigatie locatie registreren
+add_action('after_setup_theme', function () {
+    register_nav_menu('mega_menu_navigation', __('Mega Menu Navigatie', 'harborn'));
+});
 ?>

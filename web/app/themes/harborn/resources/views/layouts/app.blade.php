@@ -14,6 +14,8 @@
 
     <div id="app">
       @include('sections.header')
+      @include('partials.header-mega-menu')
+      @include('partials.header-sticky')
 
       <main id="main" class="main">
         @yield('content')

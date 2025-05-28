@@ -4,3 +4,4 @@ import.meta.glob([
 ]);
 
 import './carousel/carousel';
+import './header/sticky-header';

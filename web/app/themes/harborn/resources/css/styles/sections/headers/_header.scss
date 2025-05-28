@@ -2,7 +2,7 @@
 @use '../../harborn-style-guide/harborn-colorpalet' as color;
 
 .banner {
-  position: fixed;
+  position: absolute;
   background-color: transparent;
   width: 100%;
   z-index: 1000;

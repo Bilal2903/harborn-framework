@@ -4,7 +4,7 @@ import laravel from 'laravel-vite-plugin'
 import { wordpressPlugin, wordpressThemeJson } from '@roots/vite-plugin';
 
 export default defineConfig({
-  base: '/app/themes/sage/public/build/',
+  base: '/app/themes/harborn/public/build/',
   plugins: [
     tailwindcss(),
     laravel({
@@ -35,4 +35,8 @@ export default defineConfig({
       '@images': '/resources/images',
     },
   },
+
+  server: {
+    cors: true,
+  }
 })

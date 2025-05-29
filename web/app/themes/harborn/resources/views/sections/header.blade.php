@@ -13,40 +13,8 @@
         {!! get_search_form(false) !!}
       </div>
 
-      <div class="language-switcher">
-        @if (function_exists('pll_the_languages'))
-            <ul class="language-switcher__list">
-                @php
-                    $languages = pll_the_languages(['raw' => 1]);
-                    $current_lang = pll_current_language('slug');
-
-                    $other_languages = array_filter($languages, function($lang) use ($current_lang) {
-                        return $lang['slug'] !== $current_lang;
-                    });
-                @endphp
-
-                @if (!empty($current_lang))
-                    <li class="language-switcher__item language-switcher__item--current">
-                        <a href="#" class="language-switcher__link">
-                            {{ strtoupper($current_lang) }}
-                        </a>
-
-                        @if (!empty($other_languages))
-                            <ul class="language-switcher__dropdown">
-                                @foreach ($other_languages as $lang)
-                                    <li class="language-switcher__dropdown-item">
-                                        <a href="{{ $lang['url'] }}" class="language-switcher__dropdown-link">
-                                            {{ strtoupper($lang['slug']) }}
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @endif
-                    </li>
-                @endif
-            </ul>
-        @endif
-     </div>
+      {{-- Include the language switcher partial --}}
+      @include('partials.language-switcher')
     </div>
   </div>
 </header>

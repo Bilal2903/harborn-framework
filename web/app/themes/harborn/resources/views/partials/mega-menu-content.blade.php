@@ -46,24 +46,8 @@
             </div>
             <div class="mega-menu-language-selector">
                 <h3 class="mega-menu-heading-menu">Taal</h3>
-                <div class="language-switcher">
-                    @if (function_exists('pll_the_languages'))
-                        <ul class="language-switcher__list">
-                            @php
-                                $languages = pll_the_languages(['raw' => 1]);
-                                $current_lang = pll_current_language('slug');
-                            @endphp
-
-                            @foreach ($languages as $lang)
-                                <li class="language-switcher__item @if ($lang['slug'] === $current_lang) language-switcher__item--current @endif">
-                                    <a href="{{ $lang['url'] }}" class="language-switcher__link">
-                                        {{ strtoupper($lang['slug']) }}
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    @endif
-                </div>
+                {{-- Include the language switcher partial --}}
+                @include('partials.language-switcher', ['is_mega_menu' => true])
             </div>
         </div>
     </div>

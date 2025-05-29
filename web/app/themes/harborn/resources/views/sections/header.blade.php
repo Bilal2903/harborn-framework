@@ -30,7 +30,7 @@
                         <a href="#" class="language-switcher__link">
                             {{ strtoupper($current_lang) }}
                         </a>
-          
+
                         @if (!empty($other_languages))
                             <ul class="language-switcher__dropdown">
                                 @foreach ($other_languages as $lang)
@@ -50,3 +50,6 @@
     </div>
   </div>
 </header>
+
+@include('partials.header-mega-menu')
+@include('partials.header-sticky')

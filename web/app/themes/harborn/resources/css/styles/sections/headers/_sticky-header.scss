@@ -38,7 +38,7 @@
     border: 2px solid color.$color-harborn-dark;
     border-radius: 15px;
     background-color: transparent;
-    width: 500px; // Default width for sticky header
+    width: 500px;
 
     .search-form {
       display: flex;
@@ -97,7 +97,7 @@
   &.is-active {
     background: color.$color-white;
     span:nth-child(1) {
-      transform: translateY(7px) rotate(45deg); /* Aangepast voor X-vorm */
+      transform: translateY(7px) rotate(45deg);
     }
 
     span:nth-child(2) {
@@ -105,7 +105,7 @@
     }
 
     span:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg); /* Aangepast voor X-vorm */
+      transform: translateY(-7px) rotate(-45deg);
     }
   }
 }
@@ -178,29 +178,12 @@
         &:nth-child(2) {
           animation-delay: 0.6s;
         }
-
-        &:nth-child(3) {
-          animation-delay: 0.7s;
-        }
-
-        &:nth-child(4) {
-          animation-delay: 0.8s;
-        }
-
-        &:nth-child(5) {
-          animation-delay: 0.9s;
-        }
       }
     }
 
     .mega-menu-column-2 {
       animation: slideInFromRight 0.5s ease-out forwards;
       animation-delay: 0.1s;
-    }
-
-    .mega-menu-column-1 {
-      animation: slideInFromRight 0.5s ease-out forwards;
-      animation-delay: 0.2s;
     }
   }
 
@@ -216,23 +199,29 @@
 
 .mega-menu-close {
   position: absolute;
-  top: 2rem;
+  top: 4rem;
   right: 2rem;
   width: 48px;
   height: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: transparent;
+  background: color.$color-white;
+  color: color.$color-harborn-darkblue;
   border: none;
+  border-radius: 15px;
   font-size: 2.5rem;
   cursor: pointer;
   z-index: 2100;
-  color: color.$color-white;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 
   &:focus {
     outline: 2px solid color.$color-harborn-lime;
+  }
+
+  @media (max-width: 900px) {
+    top: 4rem;
+    right: 1rem;
   }
 }
 
@@ -252,7 +241,6 @@
 .mega-menu-column-1 {
   background-color: color.$color-white;
   padding: 10rem 4rem 3rem 4rem;
-  color: color.$color-harborn-darkblue;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -262,7 +250,7 @@
 
   .mega-menu-heading-menu {
     @include typography.harborn-typography("chapeau");
-    color: color.$color-harborn-darkblue;
+    color: color.$color-harborn-greyblue;
     margin-bottom: 1.5rem;
     font-size: 0.8rem;
   }
@@ -277,7 +265,7 @@
     padding: 0;
     margin: 0;
     font-size: 2.5rem;
-    line-height: 2; // **Line-height verder verhoogd**
+    line-height: 2;
     text-align: left;
 
     li {
@@ -289,96 +277,15 @@
     }
 
     a {
-      color: color.$color-black; // Hier is de kleur van de navigatielinks nu zwart
+      color: color.$color-black;
       text-decoration: none;
       transition: color 0.2s ease-in-out;
-      font-weight: typography.$font-weight-space-grotesk-semibold;
+      font-weight: typography.$font-weight-space-grotesk-light;
 
       &:hover {
         color: color.$color-harborn-lime;
       }
     }
-  }
-
-  .mega-menu-footer-text {
-    @include typography.harborn-typography("body-text");
-    font-size: 0.9rem;
-    color: color.$color-harborn-darkblue;
-    margin-top: auto;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(color.$color-harborn-darkblue, 0.2);
-    width: 100%;
-  }
-}
-
-.mega-menu-column-2 {
-  background-color: color.$color-harborn-greyblue;
-  padding: 3rem 2rem;
-  color: color.$color-harborn-darkblue;
-  transform: translateX(100%);
-  opacity: 0;
-}
-
-.mega-menu-column-3 {
-  background-color: color.$color-harborn-dark;
-  padding: 3rem 2rem;
-  color: color.$color-white;
-  transform: translateX(100%);
-  opacity: 0;
-  overflow: hidden;
-
-  .mega-menu-heading-socials,
-  .mega-menu-heading-language,
-  .mega-menu-heading-search {
-    @include typography.harborn-typography("chapeau");
-    color: color.$color-white;
-    margin-bottom: 1.5rem;
-  }
-
-  .mega-menu-socials-wrapper {
-    margin-bottom: 3rem;
-    width: 100%;
-  }
-
-  .social-links__list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-
-    .social-links__item {
-      margin-bottom: 0.75rem;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-
-      a {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        @include typography.harborn-typography("body-text");
-        font-size: 1.2rem;
-        font-weight: normal;
-        color: color.$color-white;
-        text-decoration: none;
-        transition: color 0.2s ease-in-out;
-
-        &:hover {
-          color: color.$color-harborn-lime;
-
-          .social-links__icon {
-            fill: color.$color-harborn-lime;
-          }
-        }
-      }
-    }
-  }
-
-  .social-links__icon {
-    width: 24px;
-    height: 24px;
-    fill: color.$color-white;
-    transition: fill 0.2s ease-in-out;
   }
 
   .mega-menu-search-wrapper {
@@ -389,8 +296,8 @@
   }
 
   .mega-menu-search-bar {
-    width: 100%;
-    border: 2px solid color.$color-white;
+    width: 80%;
+    border: 2px solid color.$color-harborn-dark;
     border-radius: 15px;
     background-color: transparent;
 
@@ -410,10 +317,10 @@
         background: none;
         border: none;
         outline: none;
-        color: color.$color-white;
+        color: color.$color-harborn-dark;
 
         &::placeholder {
-          color: color.$color-white;
+          color: color.$color-harborn-dark;
         }
       }
 
@@ -424,31 +331,116 @@
         cursor: pointer;
 
         svg {
-          fill: color.$color-white;
+          fill: color.$color-harborn-dark;
           width: 20px;
           height: 20px;
         }
       }
     }
   }
+}
+
+.mega-menu-column-2 {
+  background-color: color.$color-harborn-greyblue;
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.mega-menu-column-3 {
+  background-color: color.$color-harborn-dark;
+  overflow: hidden;
+  padding: 10rem 4rem 3rem 4rem;
+  color: color.$color-harborn-greyblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  transform: translateX(100%);
+  opacity: 0;
+
+  .mega-menu-heading-menu {
+    @include typography.harborn-typography("chapeau");
+    color: color.$color-harborn-greyblue;
+    margin-bottom: 1.5rem;
+    font-size: 0.8rem;
+  }
+
+  .mega-menu-socials-wrapper {
+    margin-bottom: 3rem;
+    width: 100%;
+  }
+
+  .social-links__list {
+    list-style: none;
+    padding-top: 20px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    a {
+      color: color.$color-black;
+      text-decoration: none;
+      transition: color 0.2s ease-in-out;
+      font-weight: typography.$font-weight-space-grotesk-light;
+
+      &:hover {
+        color: color.$color-harborn-lime;
+      }
+    }
+
+    .social-links__item {
+      margin-bottom: 0;
+
+      a {
+        display: flex;
+        align-items: center;
+        gap: 3.5rem;
+        font-weight: typography.$font-weight-space-grotesk-light;
+        font-size: 1.5rem;
+        line-height: 1.2;
+        color: color.$color-white;
+        text-decoration: none;
+        transition: color 0.2s ease-in-out;
+
+        &:hover {
+          color: color.$color-harborn-lime;
+        }
+      }
+    }
+  }
+
+  .language-switcher__item--current::after {
+    display: none;
+  }
+
+  .language-switcher__item--current::after {
+    display: none; // This remains correct for hiding the arrow
+  }
 
   .mega-menu-language-selector {
-    margin-top: 3rem;
+    margin-top: 4rem;
 
     .language-switcher {
-      display: flex;
-      gap: 0.5rem;
-      margin-top: 1rem;
+      // display: flex; /* REMOVE this from here */
+      // gap: 3.75rem; /* REMOVE this from here */
+      margin-top: 4rem;
+      border: none;
+
+      &__dropdown {
+        display: none;
+      }
 
       .language-switcher__list {
-        display: flex;
+        display: flex; /* ADD display: flex; here */
+        gap: 3.75rem; /* ADD gap: 3.75rem; here */
         padding: 0;
         margin: 0;
         list-style: none;
       }
 
       .language-switcher__item {
-        margin: 0;
+        margin: 0; // Ensure no conflicting margins
 
         .language-switcher__link {
           border: 1px solid color.$color-white;
@@ -472,21 +464,14 @@
 
         &.language-switcher__item--current {
           .language-switcher__link {
-            background-color: color.$color-harborn-lime;
             border-color: color.$color-harborn-lime;
+            background-color: transparent;
             color: color.$color-white;
           }
         }
       }
     }
   }
-}
-
-.mega-menu-column-1 > *,
-.mega-menu-column-2 > *,
-.mega-menu-column-3 > * {
-  opacity: 0;
-  transform: translateY(20px);
 }
 
 @keyframes slideInFromRight {
@@ -551,11 +536,6 @@
 
   .social-links__item a {
     font-size: 1rem;
-  }
-
-  .social-links__icon {
-    width: 20px;
-    height: 20px;
   }
 
   .mega-menu-language-selector .language-switcher .language-switcher__link {

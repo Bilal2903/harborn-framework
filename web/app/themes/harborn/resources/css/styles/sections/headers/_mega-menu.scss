@@ -1,0 +1,433 @@
+@use '../../harborn-style-guide/harborn-typography' as typography;
+@use '../../harborn-style-guide/harborn-colorpalet' as color;
+
+.mega-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  z-index: 2000;
+  display: none;
+  overflow-y: auto;
+  transition: opacity 0.3s;
+  opacity: 0;
+
+  &.is-active {
+    display: block;
+    opacity: 1;
+
+    .mega-menu-column-1 {
+      animation: slideInFromRight 0.5s ease-out forwards;
+      animation-delay: 0.2s;
+
+      & > * {
+        animation: slideInFromBottomContent 0.6s cubic-bezier(.4,2.08,.55,.44) forwards;
+        opacity: 0;
+        transform: translateY(20px);
+
+        &:nth-child(1) {
+          animation-delay: 0.5s;
+        }
+
+        &:nth-child(2) {
+          animation-delay: 0.6s;
+        }
+
+        &:nth-child(3) {
+          animation-delay: 0.7s;
+        }
+      }
+
+      .mega-nav-list li {
+        animation: slideInFromBottomContent 0.6s cubic-bezier(.4,2.08,.55,.44) forwards;
+        opacity: 0;
+        transform: translateY(20px);
+
+        @for $i from 1 through 10 {
+          &:nth-child(#{$i}) {
+            animation-delay: calc(0.8s + (#{$i} * 0.1s));
+          }
+        }
+      }
+    }
+
+    .mega-menu-column-3 {
+      animation: slideInFromRight 0.5s ease-out forwards;
+      animation-delay: 0s;
+
+      & > * {
+        animation: slideInFromBottomContent 0.6s cubic-bezier(.4,2.08,.55,.44) forwards;
+        opacity: 0;
+        transform: translateY(20px);
+
+        &:nth-child(1) {
+          animation-delay: 0.5s;
+        }
+
+        &:nth-child(2) {
+          animation-delay: 0.6s;
+        }
+      }
+    }
+
+    .mega-menu-column-2 {
+      animation: slideInFromRight 0.5s ease-out forwards;
+      animation-delay: 0.1s;
+    }
+  }
+
+  .mega-menu-content {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+  }
+}
+
+.mega-menu-close {
+  position: absolute;
+  top: 4rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: color.$color-white;
+  color: color.$color-harborn-darkblue;
+  border: none;
+  border-radius: 15px;
+  font-size: 2.5rem;
+  cursor: pointer;
+  z-index: 2100;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+
+  &:focus {
+    outline: 2px solid color.$color-harborn-lime;
+  }
+
+  @media (max-width: 900px) {
+    top: 4rem;
+    right: 1rem;
+  }
+}
+
+.mega-menu-grid {
+  display: grid;
+  grid-template-columns: 1.55fr 0.7fr 1.2fr;
+  height: 100%;
+  width: 100%;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    height: auto;
+    flex-direction: column;
+  }
+}
+
+.mega-menu-column-1 {
+  background-color: color.$color-white;
+  padding: 10rem 4rem 3rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  transform: translateX(100%);
+  opacity: 0;
+
+  .mega-menu-heading-menu {
+    @include typography.harborn-typography("chapeau");
+    color: color.$color-harborn-greyblue;
+    margin-bottom: 1.5rem;
+    font-size: 0.8rem;
+  }
+
+  .mega-menu-nav {
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+
+  .mega-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 2.5rem;
+    line-height: 2;
+    text-align: left;
+
+    li {
+      margin-bottom: 0.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    a {
+      color: color.$color-black;
+      text-decoration: none;
+      transition: color 0.2s ease-in-out;
+      font-weight: typography.$font-weight-space-grotesk-light;
+
+      &:hover {
+        color: color.$color-harborn-lime;
+      }
+    }
+  }
+
+  .mega-menu-search-wrapper {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    width: 100%;
+    display: block;
+  }
+
+  .mega-menu-search-bar {
+    width: 80%;
+    border: 2px solid color.$color-harborn-dark;
+    border-radius: 15px;
+    background-color: transparent;
+
+    .search-form {
+      display: flex;
+      width: 100%;
+      border-radius: 13px;
+      overflow: hidden;
+
+      input[type="search"],
+      .search-field {
+        width: 100%;
+        flex-grow: 1;
+        padding: 0.75rem 1rem;
+        @include typography.harborn-typography("body-text");
+        font-size: 1rem;
+        background: none;
+        border: none;
+        outline: none;
+        color: color.$color-harborn-dark;
+
+        &::placeholder {
+          color: color.$color-harborn-dark;
+        }
+      }
+
+      .search-submit {
+        background-color: transparent;
+        border: none;
+        padding: 0.75rem 1rem;
+        cursor: pointer;
+
+        svg {
+          fill: color.$color-harborn-dark;
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+}
+
+.mega-menu-column-2 {
+  background-color: color.$color-harborn-greyblue;
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.mega-menu-column-3 {
+  background-color: color.$color-harborn-dark;
+  overflow: hidden;
+  padding: 10rem 4rem 3rem 4rem;
+  color: color.$color-harborn-greyblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  transform: translateX(100%);
+  opacity: 0;
+
+  .mega-menu-heading-menu {
+    @include typography.harborn-typography("chapeau");
+    color: color.$color-harborn-greyblue;
+    margin-bottom: 1.5rem;
+    font-size: 0.8rem;
+  }
+
+  .mega-menu-socials-wrapper {
+    margin-bottom: 3rem;
+    width: 100%;
+  }
+
+  .social-links__list {
+    list-style: none;
+    padding-top: 20px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    a {
+      color: color.$color-black;
+      text-decoration: none;
+      transition: color 0.2s ease-in-out;
+      font-weight: typography.$font-weight-space-grotesk-light;
+
+      &:hover {
+        color: color.$color-harborn-lime;
+      }
+    }
+
+    .social-links__item {
+      margin-bottom: 0;
+
+      a {
+        display: flex;
+        align-items: center;
+        gap: 3.5rem;
+        font-weight: typography.$font-weight-space-grotesk-light;
+        font-size: 1.5rem;
+        line-height: 1.2;
+        color: color.$color-white;
+        text-decoration: none;
+        transition: color 0.2s ease-in-out;
+
+        &:hover {
+          color: color.$color-harborn-lime;
+        }
+      }
+    }
+  }
+
+  .language-switcher__item--current::after {
+    display: none;
+  }
+
+  .language-switcher__item--current::after {
+    display: none;
+  }
+
+  .mega-menu-language-selector {
+    margin-top: 4rem;
+
+    .language-switcher {
+      margin-top: 4rem;
+      border: none;
+
+      &__dropdown {
+        display: none;
+      }
+
+      .language-switcher__list {
+        display: flex;
+        gap: 3.75rem;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+
+      .language-switcher__item {
+        margin: 0;
+
+        .language-switcher__link {
+          border: 1px solid color.$color-white;
+          padding: 0.5rem 1rem;
+          background: transparent;
+          cursor: pointer;
+          color: color.$color-white;
+          border-radius: 5px;
+          text-decoration: none;
+          transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+          display: block;
+          @include typography.harborn-typography("body-text");
+          font-size: 1rem;
+
+          &:hover {
+            background-color: color.$color-harborn-lime;
+            border-color: color.$color-harborn-lime;
+            color: color.$color-white;
+          }
+        }
+
+        &.language-switcher__item--current {
+          .language-switcher__link {
+            border-color: color.$color-harborn-lime;
+            background-color: transparent;
+            color: color.$color-white;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromBottomContent {
+  from {
+    transform: translateY(60px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .mega-menu-overlay {
+    .mega-menu-content {
+      flex-direction: column;
+      height: auto;
+    }
+  }
+
+  .mega-menu-grid {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .mega-menu-column-1,
+  .mega-menu-column-2,
+  .mega-menu-column-3 {
+    transform: translateX(0);
+    opacity: 1;
+    animation: none;
+    padding: 2rem 1.5rem;
+  }
+
+  .mega-menu-close {
+    top: 4rem;
+    right: 1rem;
+    color: color.$color-harborn-darkblue;
+  }
+
+  .mega-nav-list {
+    font-size: 1.5rem;
+  }
+
+  .mega-menu-search-bar {
+    max-width: 100%;
+  }
+
+  .social-links__item a {
+    font-size: 1rem;
+  }
+
+  .mega-menu-language-selector .language-switcher .language-switcher__link {
+    padding: 0.4rem 0.8rem;
+  }
+}

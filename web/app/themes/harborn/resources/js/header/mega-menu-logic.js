@@ -1,4 +1,4 @@
-export function setupMegaMenu(hamburger, megaMenuOverlay, megaMenuClose) {
+export function initMegaMenu(hamburger, megaMenuOverlay, megaMenuClose) {
   if (!hamburger || !megaMenuOverlay || !megaMenuClose) return;
 
   hamburger.addEventListener('click', function () {

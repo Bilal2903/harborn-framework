@@ -1,6 +1,6 @@
-import { setupStickyHeader } from './_sticky-header-logic.js';
-import { setupHamburgerToggle } from './_hamburger-toggle.js';
-import { setupMegaMenu } from './_mega-menu-logic.js';
+import { initStickyHeader } from './sticky-header-logic.js';
+import { initHamburgerToggle } from './hamburger-toggle.js';
+import { initMegaMenu } from './mega-menu-logic.js';
 
 document.addEventListener('DOMContentLoaded', function () {
   const stickyHeader = document.getElementById('stickyHeader');
@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const megaMenuOverlay = document.getElementById('megaMenuOverlay');
   const megaMenuClose = document.querySelector('.mega-menu-close');
 
-  const checkStickyHeader = setupStickyHeader(stickyHeader, mainHeader);
-  const toggleHamburgerVisibility = setupHamburgerToggle(hamburger, stickyHeader);
-  setupMegaMenu(hamburger, megaMenuOverlay, megaMenuClose);
+  const checkStickyHeader = initStickyHeader(stickyHeader, mainHeader);
+  const toggleHamburgerVisibility = initHamburgerToggle(hamburger, stickyHeader);
+  initMegaMenu(hamburger, megaMenuOverlay, megaMenuClose);
 
   let ticking = false;
 

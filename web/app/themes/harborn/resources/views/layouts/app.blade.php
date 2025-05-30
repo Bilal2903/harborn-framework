@@ -28,6 +28,8 @@
       @endif -->
 
       @include('sections.footer')
+
+      @include('partials.back-to-top')
     </div>
 
     @php(do_action('get_footer'))

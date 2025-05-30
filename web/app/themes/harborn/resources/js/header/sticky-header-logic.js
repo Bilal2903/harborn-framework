@@ -1,4 +1,4 @@
-export function setupStickyHeader(stickyHeader, mainHeader) {
+export function initStickyHeader(stickyHeader, mainHeader) {
   if (!mainHeader || !stickyHeader) return;
 
   function checkStickyHeader() {

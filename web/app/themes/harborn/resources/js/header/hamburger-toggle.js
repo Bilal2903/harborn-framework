@@ -1,4 +1,4 @@
-export function setupHamburgerToggle(hamburger, stickyHeader) {
+export function initHamburgerToggle(hamburger, stickyHeader) {
   if (!hamburger || !stickyHeader) return;
 
   function toggleHamburgerVisibility() {

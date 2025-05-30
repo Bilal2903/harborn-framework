@@ -1,0 +1,46 @@
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #212121;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    min-width: 80px;
+    min-height: 80px;
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    z-index: 1000;
+
+    &:hover {
+        background-color: #000;
+    }
+
+    &.is-visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    svg {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        margin-bottom: 4px;
+    }
+
+    .back-to-top__text {
+        font-family: inherit;
+        font-size: 0.8rem;
+        line-height: 1;
+        white-space: nowrap;
+    }
+}

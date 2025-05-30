@@ -27,9 +27,9 @@
         </aside>
       @endif -->
 
-      @include('sections.footer')
+      <x-back-to-top-button />
 
-      @include('partials.back-to-top')
+      @include('sections.footer')
     </div>
 
     @php(do_action('get_footer'))

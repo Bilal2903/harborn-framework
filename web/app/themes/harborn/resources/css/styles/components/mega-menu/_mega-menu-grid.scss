@@ -1,0 +1,12 @@
+.mega-menu-grid {
+  display: grid;
+  grid-template-columns: 1.55fr 0.7fr 1.2fr;
+  height: 100%;
+  width: 100%;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    height: auto;
+    flex-direction: column;
+  }
+}

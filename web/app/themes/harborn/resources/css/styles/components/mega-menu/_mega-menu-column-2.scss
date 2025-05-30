@@ -1,0 +1,14 @@
+@use '../../harborn-style-guide/harborn-colorpalet' as color;
+
+.mega-menu-column-2 {
+  background-color: color.$color-harborn-greyblue;
+  transform: translateX(100%);
+  opacity: 0;
+
+  @media (max-width: 900px) {
+    transform: translateX(0);
+    opacity: 1;
+    animation: none;
+    padding: 2rem 1.5rem;
+  }
+}

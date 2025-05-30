@@ -26,6 +26,23 @@
   }
 }
 
+input[type="search"],
+  .search-field {
+    width: 100%;
+    flex-grow: 1;
+    padding: 0.75rem 1rem;
+    @include typography.harborn-typography("body-text");
+    font-size: 1rem;
+    background: none;
+    border: none;
+    outline: none;
+
+    &::placeholder {
+      color: color.$color-white;
+    }
+  }
+
+
 .search-bar .search-submit {
   background: none;
   border: none;

@@ -80,6 +80,7 @@ class ProjectPostTypeServiceProvider extends ServiceProvider
             'publicly_queryable'    => true,
             'capability_type'       => 'post',
             'show_in_rest'          => true,
+            'rewrite'               => ['slug' => 'project', 'with_front' => true],
         ];
         register_post_type('project', $args);
     }

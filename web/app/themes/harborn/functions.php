@@ -83,11 +83,11 @@ function my_acf_blocks_init() {
         acf_register_block_type( array(
             'name'              => 'carousel',
             'title'             => __( 'Carousel' ),
-            'description'       => __( 'Een carousel met afbeeldingen of content.' ),
+            'description'       => __( 'A carousel with images or content.' ),
             'render_template'   => 'blocks/carousel/carousel.php',
             'category'          => 'formatting',
             'icon'              => 'images-alt2',
-            'keywords'          => array( 'carousel', 'slider', 'afbeeldingen' ),
+            'keywords'          => array( 'carousel', 'slider', 'images' ),
             'supports'          => array(
                 'align'         => true,
                 'mode'          => false,

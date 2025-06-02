@@ -155,3 +155,10 @@ add_action('widgets_init', function () {
         'id' => 'sidebar-footer',
     ] + $config);
 });
+
+add_filter('template_include', function ($template) {
+    if (is_singular('project')) {
+        error_log('WordPress is trying to load template: ' . basename($template));
+    }
+    return $template;
+});

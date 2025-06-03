@@ -9,7 +9,7 @@
  */
 
 // Generate a unique ID for the block for SCSS/JS purposes
-$id = 'carousel-block-' . $block['id'];
+$id = 'carousel-block-'.$block['id'];
 if (! empty($block['anchor'])) {
     $id = $block['anchor'];
 }
@@ -17,10 +17,10 @@ if (! empty($block['anchor'])) {
 // Generate classes for the block
 $className = 'carousel-block section-work-overview';
 if (! empty($block['className'])) {
-    $className .= ' ' . $block['className'];
+    $className .= ' '.$block['className'];
 }
 if (! empty($block['align'])) {
-    $className .= ' align' . $block['align'];
+    $className .= ' align'.$block['align'];
 }
 
 $args = [

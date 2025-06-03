@@ -158,7 +158,7 @@ add_action('widgets_init', function () {
 
 add_filter('template_include', function ($template) {
     if (is_singular('project')) {
-        error_log('WordPress is trying to load template: ' . basename($template));
+        error_log('WordPress is trying to load template: '.basename($template));
     }
 
     return $template;

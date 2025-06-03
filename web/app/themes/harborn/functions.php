@@ -11,7 +11,7 @@
 |
 */
 
-if (! file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
+if (! file_exists($composer = __DIR__.'/vendor/autoload.php')) {
     wp_die(__('Error locating autoloader. Please run <code>composer install</code>.', 'sage'));
 }
 
@@ -107,7 +107,7 @@ add_action('after_setup_theme', function () {
 function theme_gsap_script()
 {
     wp_enqueue_script('gsap-js', 'https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js', [], false, true);
-    wp_enqueue_script('gsap-custom', get_template_directory_uri() . '/resources/js/carousel/carousel.js', ['gsap-js'], false, true);
+    wp_enqueue_script('gsap-custom', get_template_directory_uri().'/resources/js/carousel/carousel.js', ['gsap-js'], false, true);
 }
 add_action('wp_enqueue_scripts', 'theme_gsap_script');
 

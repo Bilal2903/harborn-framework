@@ -17,7 +17,7 @@ add_filter('body_class', function ($classes) {
 });
 
 // Generate a unique ID for the block for SCSS/JS purposes
-$id = 'hero-block-' . $block['id'];
+$id = 'hero-block-'.$block['id'];
 if (! empty($block['anchor'])) {
     $id = $block['anchor'];
 }
@@ -25,10 +25,10 @@ if (! empty($block['anchor'])) {
 // Generate classes for the block
 $className = 'hero-block';
 if (! empty($block['className'])) {
-    $className .= ' ' . $block['className'];
+    $className .= ' '.$block['className'];
 }
 if (! empty($block['align'])) {
-    $className .= ' align' . $block['align'];
+    $className .= ' align'.$block['align'];
 }
 
 // Get the ACF fields

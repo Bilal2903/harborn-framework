@@ -25,7 +25,10 @@ jobs:
         run: composer install --no-interaction --prefer-dist --no-progress
 
       - name: Configure PHP_CodeSniffer (set installed_paths for WPCS)
-        run: ./vendor/bin/phpcs --config-set installed_paths ./vendor/wp-coding-standards/wpcs
+        run: ./vendor/bin/phpcs --config-set installed_paths $(pwd)/vendor/wp-coding-standards/wpcs
+
+      - name: Show available coding standards
+        run: ./vendor/bin/phpcs -i
 
       - name: Lint PHP with PHP_CodeSniffer
         run: composer run phpcs

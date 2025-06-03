@@ -3,8 +3,6 @@
 namespace App\Providers;
 
 use Roots\Acorn\Sage\SageServiceProvider;
-use App\Providers\ProjectPostTypeServiceProvider;
-use Illuminate\Support\Facades\View;
 
 class ThemeServiceProvider extends SageServiceProvider
 {

@@ -8,7 +8,7 @@ namespace App;
 
 use Illuminate\Support\Facades\Vite;
 
-add_filter( 'doing_it_wrong_trigger_error', '__return_false' );
+add_filter('doing_it_wrong_trigger_error', '__return_false');
 
 /**
  * Inject styles into the block editor.
@@ -158,7 +158,8 @@ add_action('widgets_init', function () {
 
 add_filter('template_include', function ($template) {
     if (is_singular('project')) {
-        error_log('WordPress is trying to load template: ' . basename($template));
+        error_log('WordPress is trying to load template: '.basename($template));
     }
+
     return $template;
 });

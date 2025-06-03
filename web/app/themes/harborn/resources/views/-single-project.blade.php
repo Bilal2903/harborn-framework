@@ -1,6 +1,6 @@
 <?php
-@extends('layouts.app')
+@extends( 'layouts.app' )
 
-@section('content')
-  @include('partials.content-single-project')
+@section( 'content' )
+	@require 'partials.content-single-project'
 @endsection

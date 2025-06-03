@@ -6,6 +6,7 @@ namespace Tests\Support;
 
 /**
  * Inherited Methods
+ *
  * @method void wantTo($text)
  * @method void wantToTest($text)
  * @method void execute($callable)
@@ -18,12 +19,12 @@ namespace Tests\Support;
  * @method void pause($vars = [])
  *
  * @SuppressWarnings(PHPMD)
-*/
-class FunctionalTester extends \Codeception\Actor
-{
-    use _generated\FunctionalTesterActions;
+ */
+class FunctionalTester extends \Codeception\Actor {
 
-    /**
-     * Define custom actions here
-     */
+	use _generated\FunctionalTesterActions;
+
+	/**
+	 * Define custom actions here
+	 */
 }

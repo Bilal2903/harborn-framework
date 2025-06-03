@@ -3,36 +3,27 @@ import eslint from '@eslint/js';
 import { FlatCompat } from '@eslint/eslintrc';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { defineConfig, globalIgnores } from 'eslint/config';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const compat = new FlatCompat({ baseDirectory: __dirname });
 
-export default [
-  {
-    ignores: [
-      'node_modules/',
-      'dist/',
-      'build/',
-      'resources/assets/build/',
-      'public/',
-      'public/build/',
-      'vendor/',
-      '*.css', 
-      '*.json', 
-      '*.png', 
-    ],
-    settings: {
-      'import/resolver': {
-        node: {
-          moduleDirectory: [
-            'node_modules',
-            '/Users/bilal/dev/harborn-framework/web/app/themes/harborn/node_modules',
-          ],
-        },
-      },
-    },
-  },
+export default defineConfig([
+  globalIgnores([
+    'node_modules/',
+    'dist/',
+    'build/',
+    'resources/assets/build/',
+    'public/',
+    'public/build/',
+    'vendor/',
+    'test-results/',
+    '*.xml',
+    '*.css',
+    '*.json',
+    '*.png',
+  ]),
 
   eslint.configs.recommended,
 
@@ -88,4 +79,11 @@ export default [
       'import/no-unresolved': 'off',
     },
   },
-];
+
+  {
+    files: ['eslint.config.js'],
+    rules: {
+      'import/no-unresolved': 'off',
+    },
+  },
+]);

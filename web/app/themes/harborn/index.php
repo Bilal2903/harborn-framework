@@ -5,4 +5,4 @@
  *
  * @since 1.0.0
  */
-echo view('index');
+echo view( 'index' );

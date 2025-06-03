@@ -18,7 +18,7 @@ COPY docker-resources/traefik/traefik.yaml.template /etc/traefik/traefik.yaml.te
 
 CMD /bin/sh -c "envsubst < /etc/traefik/traefik.yaml.template > /etc/traefik/traefik.yaml && /usr/local/bin/traefik"
 
-FROM php:8.2-fpm-alpine AS php
+FROM php:8.3-fpm-alpine AS php
 
 RUN apk update && apk upgrade && apk add --no-cache \
     git \

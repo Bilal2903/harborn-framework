@@ -24,9 +24,6 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --no-interaction --prefer-dist --no-progress
 
-      - name: Configure PHP_CodeSniffer (set installed_paths for WPCS)
-        run: ./vendor/bin/phpcs --config-set installed_paths $(pwd)/vendor/wp-coding-standards/wpcs
-
       - name: Show available coding standards
         run: ./vendor/bin/phpcs -i
 

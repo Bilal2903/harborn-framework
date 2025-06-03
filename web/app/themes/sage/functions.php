@@ -63,3 +63,7 @@ collect(['setup', 'filters'])
             );
         }
     });
+
+return [
+    // ...existing code...
+];

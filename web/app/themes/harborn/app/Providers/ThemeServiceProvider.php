@@ -1,11 +1,20 @@
 <?php
+/**
+ * Theme Service Provider
+ *
+ * @package Harborn
+ */
 
 namespace App\Providers;
 
 use Roots\Acorn\Sage\SageServiceProvider;
 
+/**
+ * Class ThemeServiceProvider
+ *
+ * Registers theme-specific services.
+ */
 class ThemeServiceProvider extends SageServiceProvider {
-
 	/**
 	 * Register any application services.
 	 *

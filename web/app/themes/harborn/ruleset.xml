@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<ruleset name="Custom WordPress Ruleset">
+    <description>Custom ruleset for WordPress theme: allow class files to be PascalCase (each word starts with uppercase), but require all other files to be lowercase with hyphens between words.</description>
+    <rule ref="WordPress" />
+    <!-- Exclude the class- prefix rule for class files -->
+    <exclude name="WordPress.Files.FileName.ClassFileName" />
+    <!-- Allow PascalCase for class files (e.g., ProjectPostTypeHeader.php) -->
+    <exclude-pattern>*/*/App.php</exclude-pattern>
+    <exclude-pattern>*/*/ThemeServiceProvider.php</exclude-pattern>
+    <exclude-pattern>*/*/ProjectPostTypeServiceProvider.php</exclude-pattern>
+    <!-- Enforce lowercase with hyphens for all other files (no strict property) -->
+    <rule ref="Generic.Files.LowercasedFilename" />
+</ruleset>

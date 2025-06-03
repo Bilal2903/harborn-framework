@@ -2,25 +2,27 @@
 /**
  * Carousel Block Template.
  *
- * @param   array
- * @param   string
- * @param   bool
- * @param   (int|string)
+ * @package Harborn
+ *
+ * @param array $block Block settings and attributes.
+ * @param string $content Block inner HTML (empty).
+ * @param bool $is_preview True during AJAX preview.
+ * @param int|string $post_id The post ID this block is saved to.
  */
 
-// Generate a unique ID for the block for SCSS/JS purposes
-$id = 'carousel-block-' . $block['id'];
+// Generate a unique ID for the block for SCSS/JS purposes.
+$carousel_block_id = 'carousel-block-' . $block['id'];
 if ( ! empty( $block['anchor'] ) ) {
-	$id = $block['anchor'];
+	$carousel_block_id = $block['anchor'];
 }
 
-// Generate classes for the block
-$className = 'carousel-block section-work-overview';
+// Generate classes for the block.
+$carousel_block_class = 'carousel-block section-work-overview';
 if ( ! empty( $block['className'] ) ) {
-	$className .= ' ' . $block['className'];
+	$carousel_block_class .= ' ' . $block['className'];
 }
 if ( ! empty( $block['align'] ) ) {
-	$className .= ' align' . $block['align'];
+	$carousel_block_class .= ' align' . $block['align'];
 }
 
 $args           = array(
@@ -31,7 +33,7 @@ $args           = array(
 $projects_query = new WP_Query( $args );
 
 if ( $projects_query->have_posts() ) { ?>
-	<div id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $className ); ?>">
+	<div id="<?php echo esc_attr( $carousel_block_id ); ?>" class="<?php echo esc_attr( $carousel_block_class ); ?>">
 		<div class="carousel-block__header">
 			<h2 class="carousel-block__title">Werk</h2>
 			<div class="more-work-link-bg">
@@ -45,10 +47,10 @@ if ( $projects_query->have_posts() ) { ?>
 				<?php
 				while ( $projects_query->have_posts() ) {
 					$projects_query->the_post();
-					$image_url = get_the_post_thumbnail_url( get_the_ID(), 'full' );
-					$excerpt   = get_the_excerpt();
-					$title     = get_the_title();
-					$permalink = get_permalink();
+					$image_url       = get_the_post_thumbnail_url( get_the_ID(), 'full' );
+					$project_excerpt = get_the_excerpt();
+					$project_title   = get_the_title();
+					$permalink       = get_permalink();
 					?>
 					<swiper-slide>
 						<a href="<?php echo esc_url( $permalink ); ?>" class="project-card" tabindex="0">
@@ -57,9 +59,9 @@ if ( $projects_query->have_posts() ) { ?>
 							<?php } ?>
 							<div class="project-card__overlay"></div>
 							<div class="project-card__content">
-								<h3 class="project-card__title"><?php echo esc_html( $title ); ?></h3>
-								<?php if ( $excerpt ) { ?>
-									<p class="project-card__excerpt"><?php echo esc_html( $excerpt ); ?></p>
+								<h3 class="project-card__title"><?php echo esc_html( $project_title ); ?></h3>
+								<?php if ( $project_excerpt ) { ?>
+									<p class="project-card__excerpt"><?php echo esc_html( $project_excerpt ); ?></p>
 								<?php } ?>
 							</div>
 						</a>
@@ -68,11 +70,11 @@ if ( $projects_query->have_posts() ) { ?>
 				<?php wp_reset_postdata(); ?>
 			</swiper-container>
 		</div>
-		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+		<!-- Remove the direct Swiper <script> tag, as it is now enqueued in functions.php -->
 	</div>
 	<?php
 }
-if ( ! $projects_query->have_posts() && is_user_logged_in() && $is_preview ) {
+if ( ! $projects_query->have_posts() && is_user_logged_in() && ! empty( $is_preview ) ) {
 	echo '<p style="text-align: center; padding: 20px;">Er zijn nog geen projecten gevonden. Maak nieuwe projecten aan om ze hier te tonen.</p>';
 }
 ?>

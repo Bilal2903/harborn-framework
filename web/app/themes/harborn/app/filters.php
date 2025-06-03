@@ -1,7 +1,8 @@
 <?php
-
 /**
  * Theme filters.
+ *
+ * @package Harborn
  */
 
 namespace App;

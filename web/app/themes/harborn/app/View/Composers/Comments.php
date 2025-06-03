@@ -1,9 +1,19 @@
 <?php
+/**
+ * Comments View Composer
+ *
+ * @package Harborn
+ */
 
 namespace App\View\Composers;
 
 use Roots\Acorn\View\Composer;
 
+/**
+ * Class Comments
+ *
+ * Provides data and helpers for the comments partial.
+ */
 class Comments extends Composer {
 
 	/**
@@ -40,7 +50,8 @@ class Comments extends Composer {
 				'style'      => 'ol',
 				'short_ping' => true,
 				'echo'       => false,
-			)
+			),
+			$post_id !== null ? $post_id : null
 		);
 	}
 
@@ -81,6 +92,6 @@ class Comments extends Composer {
 	 * Determine if the comments are closed.
 	 */
 	public function closed(): bool {
-		return ! comments_open() && get_comments_number() != '0' && post_type_supports( get_post_type(), 'comments' );
+		return ! comments_open() && '0' !== get_comments_number() && post_type_supports( get_post_type(), 'comments' );
 	}
 }

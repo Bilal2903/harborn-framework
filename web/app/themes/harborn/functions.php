@@ -1,4 +1,9 @@
 <?php
+/**
+ * Theme functions and definitions
+ *
+ * @package Harborn
+ */
 
 /*
 |--------------------------------------------------------------------------
@@ -11,11 +16,11 @@
 |
 */
 
-if ( ! file_exists( $composer = __DIR__ . '/vendor/autoload.php' ) ) {
-	wp_die( __( 'Error locating autoloader. Please run <code>composer install</code>.', 'sage' ) );
+if ( ! file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
+	wp_die( esc_html__( 'Error locating autoloader. Please run <code>composer install</code>.', 'sage' ) );
 }
 
-require $composer;
+require __DIR__ . '/vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +32,7 @@ require $composer;
 
 if ( ! function_exists( 'Roots\bootloader' ) ) {
 	wp_die(
-		__( 'You need to install Roots/Acorn to use this theme.', 'harborn' ),
+		esc_html__( 'You need to install Roots/Acorn to use this theme.', 'harborn' ),
 		'',
 		array(
 			'back_link' => true,
@@ -52,10 +57,11 @@ Roots\bootloader()->boot();
 collect( array( 'setup', 'filters' ) )
 	->each(
 		function ( $file ) {
-			if ( ! locate_template( $file = "app/{$file}.php", true, true ) ) {
+			$file = "app/{$file}.php";
+			if ( ! locate_template( $file, true, true ) ) {
 				wp_die(
-				/* translators: %s is replaced with the relative file path */
-					sprintf( __( 'Error locating <code>%s</code> for inclusion.', 'sage' ), $file ),
+					/* translators: %s is replaced with the relative file path */
+					esc_html( sprintf( esc_html__( 'Error locating <code>%s</code> for inclusion.', 'sage' ), $file ) )
 				);
 			}
 		}
@@ -105,7 +111,8 @@ add_action( 'acf/init', 'my_acf_blocks_init' );
 add_action(
 	'after_setup_theme',
 	function () {
-		app()->register( \App\Providers\ProjectPostTypeServiceProvider::class );
+		app()->register( \App\Providers\ProjectPostTypeServiceProvider::class ); // Legacy: for backward compatibility
+		app()->register( \App\Providers\Projectposttypeserviceprovider::class ); // New: matches class name and file name
 	}
 );
 
@@ -113,15 +120,18 @@ add_action(
  * Enqueue GSAP and custom scripts
  */
 function theme_gsap_script() {
-	wp_enqueue_script( 'gsap-js', 'https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js', array(), false, true );
-	wp_enqueue_script( 'gsap-custom', get_template_directory_uri() . '/resources/js/carousel/carousel.js', array( 'gsap-js' ), false, true );
+	wp_enqueue_script( 'gsap-js', 'https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js', array(), '3.13.0', true );
+	wp_enqueue_script( 'gsap-custom', get_template_directory_uri() . '/resources/js/carousel/carousel.js', array( 'gsap-js' ), '1.0.0', true );
+	wp_enqueue_script( 'swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js', array(), '11.0.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'theme_gsap_script' );
 
-// Mega Menu navigation location registration
+/**
+ * Mega Menu navigation location registration.
+ */
 add_action(
 	'after_setup_theme',
 	function () {
-		register_nav_menu( 'mega_menu_navigation', __( 'Mega Menu Navigation', 'harborn' ) );
+		register_nav_menu( 'mega_menu_navigation', esc_html__( 'Mega Menu Navigation', 'harborn' ) );
 	}
 );

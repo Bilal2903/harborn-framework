@@ -9,7 +9,6 @@ use PHPUnit\Framework\Assert;
 
 final class HomePageCest
 {
-
     public function testHeaderElements(AcceptanceTester $I): void
     {
         $I->amOnPage('/');

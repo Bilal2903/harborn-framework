@@ -16,16 +16,16 @@
   justify-content: center;
   pointer-events: none;
   z-index: 2;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
   font-family: inherit;
-  @include typography.harborn-typography("body-text");
+  @include typography.harborn-typography('body-text');
   transition: background 0.2s;
   mix-blend-mode: normal;
 }
 
 .carousel-cursor__text {
   color: color.$color-harborn-darkblue;
-  @include typography.harborn-typography("body-text");
+  @include typography.harborn-typography('body-text');
   user-select: none;
   pointer-events: none;
   display: flex;

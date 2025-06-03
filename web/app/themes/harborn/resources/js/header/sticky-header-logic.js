@@ -1,5 +1,7 @@
 export function initStickyHeader(stickyHeader, mainHeader) {
-  if (!mainHeader || !stickyHeader) return;
+  if (!mainHeader || !stickyHeader) {
+    return;
+  }
 
   function checkStickyHeader() {
     const headerRect = mainHeader.getBoundingClientRect();

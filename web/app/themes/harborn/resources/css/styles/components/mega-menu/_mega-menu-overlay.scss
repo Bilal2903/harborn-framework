@@ -20,7 +20,8 @@
       animation-delay: 0.2s;
 
       & > * {
-        animation: slideInFromBottomContent 0.6s cubic-bezier(.4,2.08,.55,.44) forwards;
+        animation: slideInFromBottomContent 0.6s
+          cubic-bezier(0.4, 2.08, 0.55, 0.44) forwards;
         opacity: 0;
         transform: translateY(20px);
 
@@ -38,7 +39,8 @@
       }
 
       .mega-nav-list li {
-        animation: slideInFromBottomContent 0.6s cubic-bezier(.4,2.08,.55,.44) forwards;
+        animation: slideInFromBottomContent 0.6s
+          cubic-bezier(0.4, 2.08, 0.55, 0.44) forwards;
         opacity: 0;
         transform: translateY(20px);
 
@@ -55,7 +57,8 @@
       animation-delay: 0s;
 
       & > * {
-        animation: slideInFromBottomContent 0.6s cubic-bezier(.4,2.08,.55,.44) forwards;
+        animation: slideInFromBottomContent 0.6s
+          cubic-bezier(0.4, 2.08, 0.55, 0.44) forwards;
         opacity: 0;
         transform: translateY(20px);
 

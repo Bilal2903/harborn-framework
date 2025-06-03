@@ -1,63 +1,65 @@
+@use '../../harborn-style-guide/harborn-typography' as typography;
+@use '../../harborn-style-guide/harborn-colorpalet' as color;
+
 .back-to-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: transparent;
-    color: #fff;
-    border: none;
-    border-radius: 0;
-    min-width: unset;
-    min-height: unset;
-    padding: 80px 80px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: transparent;
+  color: color.$color-white;
+  border: none;
+  border-radius: 0;
+  min-width: unset;
+  min-height: unset;
+  padding: 80px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease-in-out,
+    visibility 0.3s ease-in-out;
+  z-index: 1000;
+
+  .back-to-top__icon-wrapper {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-    z-index: 1000;
+    width: 60px;
+    height: 60px;
+    background-color: color.$color-harborn-dark;
+    border-radius: 50%;
+    margin-bottom: 8px;
+    transition: background-color 0.3s ease-in-out;
+  }
 
+  &:hover {
     .back-to-top__icon-wrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 60px;
-        height: 60px;
-        background-color: #212121;
-        border-radius: 50%;
-        margin-bottom: 8px;
-        transition: background-color 0.3s ease-in-out;
+      background-color: color.$color-black;
     }
+  }
 
-    &:hover {
-        .back-to-top__icon-wrapper {
-            background-color: #000;
-        }
-    }
+  &.is-visible {
+    opacity: 1;
+    visibility: visible;
+  }
 
-    &.is-visible {
-        opacity: 1;
-        visibility: visible;
-    }
+  svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    width: 30px;
+    height: 30px;
+  }
 
-    svg {
-        fill: none;
-        stroke: currentColor;
-        stroke-width: 2;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        width: 30px;
-        height: 30px;
-    }
-
-    .back-to-top__text {
-        font-family: inherit;
-        font-size: 1rem;
-        line-height: 1.2;
-        white-space: nowrap;
-        color: #212121;
-        font-weight: 600;
-    }
+  .back-to-top__text {
+    @include typography.harborn-typography('body-text');
+    color: color.$color-harborn-dark;
+    font-weight: typography.$font-weight-space-grotesk-semibold;
+  }
 }

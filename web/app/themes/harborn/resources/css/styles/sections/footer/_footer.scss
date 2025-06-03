@@ -27,10 +27,10 @@
 .footer-nav__link {
   color: inherit;
   text-decoration: none;
-  @include typography.harborn-typography("body-text");
+  @include typography.harborn-typography('body-text');
   white-space: nowrap;
   &:hover {
-     color: color.$color-harborn-lime;
+    color: color.$color-harborn-lime;
   }
 }
 
@@ -48,7 +48,7 @@
   &:hover {
     opacity: 0.8;
   }
-  &[aria-label="Instagram"] .social-links__icon {
+  &[aria-label='Instagram'] .social-links__icon {
     stroke: currentColor;
     fill: none;
   }

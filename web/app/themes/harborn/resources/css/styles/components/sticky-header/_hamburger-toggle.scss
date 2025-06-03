@@ -22,7 +22,9 @@
     background: color.$color-harborn-darkblue;
     margin: 4px 0;
     border-radius: 2px;
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    transition:
+      transform 0.3s ease-in-out,
+      opacity 0.3s ease-in-out;
   }
 
   &:focus {

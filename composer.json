@@ -85,6 +85,7 @@
     },
     "scripts": {
         "lint": "pint --test",
-        "lint:fix": "pint"
+        "lint:fix": "pint",
+        "phpcs": "./vendor/bin/phpcs --standard=WordPress --extensions=php --ignore=web/app/themes/harborn/node_modules/,web/app/themes/harborn/dist/,web/app/themes/harborn/build/,web/app/themes/harborn/public/,node_modules/,vendor/,web/app/themes/harborn/vendor/,web/wp/ ."
     }
 }

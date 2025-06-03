@@ -24,12 +24,22 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --no-interaction --prefer-dist --no-progress
 
+      - name: Configure PHP_CodeSniffer (set installed_paths for WPCS)
+        run: ./vendor/bin/phpcs --config-set installed_paths ./vendor/wp-coding-standards/wpcs
+
+      - name: Lint PHP with PHP_CodeSniffer
+        run: composer run phpcs
+
       - name: Install Pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9
 
-      - name: Lint
+      - name: Install Pnpm theme dependencies
+        run: pnpm install --no-frozen-lockfile
+        working-directory: ./web/app/themes/harborn
+
+      - name: Lint JavaScript
         run: pnpm lint
         working-directory: ./web/app/themes/harborn
 

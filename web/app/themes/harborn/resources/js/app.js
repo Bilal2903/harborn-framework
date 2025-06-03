@@ -1,7 +1,4 @@
-import.meta.glob([
-  '../images/**',
-  '../fonts/**',
-]);
+import.meta.glob(['../images/**', '../fonts/**']);
 
 import { initBackToTopButton } from './back-to-top-button/back-to-top';
 import { initCarousel } from './carousel/carousel';

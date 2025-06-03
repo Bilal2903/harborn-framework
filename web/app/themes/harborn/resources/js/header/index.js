@@ -10,7 +10,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const megaMenuClose = document.querySelector('.mega-menu-close');
 
   const checkStickyHeader = initStickyHeader(stickyHeader, mainHeader);
-  const toggleHamburgerVisibility = initHamburgerToggle(hamburger, stickyHeader);
+  const toggleHamburgerVisibility = initHamburgerToggle(
+    hamburger,
+    stickyHeader
+  );
   initMegaMenu(hamburger, megaMenuOverlay, megaMenuClose);
 
   let ticking = false;

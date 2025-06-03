@@ -24,6 +24,11 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --no-interaction --prefer-dist --no-progress
 
+      - name: Install Pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
       - name: Lint
         run: pnpm lint
         working-directory: ./web/app/themes/harborn

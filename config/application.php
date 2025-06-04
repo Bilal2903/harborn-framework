@@ -36,8 +36,8 @@ $webroot_dir = $root_dir . '/web';
  */
 if ( file_exists( $root_dir . '/.env' ) ) {
 	$env_files = file_exists( $root_dir . '/.env.local' )
-		? array( '.env', '.env.local' )
-		: array( '.env' );
+	? array( '.env', '.env.local' )
+	: array( '.env' );
 
 	$repository = Dotenv\Repository\RepositoryBuilder::createWithNoAdapters()
 		->addAdapter( Dotenv\Repository\Adapter\EnvConstAdapter::class )
@@ -153,7 +153,7 @@ if ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && $_SERVER['HTTP_X_FORWARDED_P
 $env_config = __DIR__ . '/environments/' . WP_ENV . '.php';
 
 if ( file_exists( $env_config ) ) {
-	require_once $env_config;
+	include_once $env_config;
 }
 
 Config::apply();

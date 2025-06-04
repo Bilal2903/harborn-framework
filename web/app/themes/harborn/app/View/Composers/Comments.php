@@ -45,13 +45,14 @@ class Comments extends Composer {
 			return null;
 		}
 
+		// PHPCS: Use Yoda conditions.
+		// PHPCS: $post_id is not defined, so remove from call.
 		return wp_list_comments(
 			array(
 				'style'      => 'ol',
 				'short_ping' => true,
 				'echo'       => false,
-			),
-			$post_id !== null ? $post_id : null
+			)
 		);
 	}
 
@@ -92,6 +93,6 @@ class Comments extends Composer {
 	 * Determine if the comments are closed.
 	 */
 	public function closed(): bool {
-		return ! comments_open() && '0' !== get_comments_number() && post_type_supports( get_post_type(), 'comments' );
+		return ! comments_open() && get_comments_number() !== '0' && post_type_supports( get_post_type(), 'comments' );
 	}
 }

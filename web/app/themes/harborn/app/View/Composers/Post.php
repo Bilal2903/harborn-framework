@@ -1,9 +1,19 @@
 <?php
+/**
+ * Post View Composer.
+ *
+ * @package Harborn
+ */
 
 namespace App\View\Composers;
 
 use Roots\Acorn\View\Composer;
 
+/**
+ * Class Post
+ *
+ * Handles post-related view data.
+ */
 class Post extends Composer {
 
 	/**
@@ -26,7 +36,8 @@ class Post extends Composer {
 		}
 
 		if ( is_home() ) {
-			if ( $home = get_option( 'page_for_posts', true ) ) {
+			$home = get_option( 'page_for_posts', true );
+			if ( $home ) {
 				return get_the_title( $home );
 			}
 

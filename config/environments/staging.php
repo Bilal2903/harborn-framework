@@ -1,4 +1,9 @@
 <?php
+/**
+ * Staging environment configuration.
+ *
+ * @package harborn-framework
+ */
 
 /**
  * Configuration overrides for WP_ENV === 'staging'

@@ -1,27 +1,40 @@
 <?xml version="1.0"?>
 <ruleset name="Project Rules">
-  <description>WordPress coding standards for this project.</description>
+  <description>WordPress coding standards for this project, with customizations.</description>
 
-  <rule ref="WordPress"/>
+  <rule ref="WordPress">
+    <!-- Custom: Allow class files without 'class-' prefix and custom file naming -->
+    <exclude name="WordPress.Files.FileName.NotClassFile"/>
+    <exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+    <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
+  </rule>
   <!-- Exclude deprecated sniff -->
   <exclude name="Generic.Functions.CallTimePassByReference"/>
   <file>./</file>
 
+  <!-- Also allow custom file naming for tests directory -->
+  <exclude-pattern>tests/Acceptance/*</exclude-pattern>
+  <exclude-pattern>tests/Unit/*</exclude-pattern>
+  <exclude-pattern>tests/Support/*</exclude-pattern>
+
   <exclude-pattern>*/node_modules/*</exclude-pattern>
   <exclude-pattern>*/vendor/*</exclude-pattern>
-
   <exclude-pattern>web/app/themes/harborn/dist/*</exclude-pattern>
   <exclude-pattern>web/app/themes/harborn/build/*</exclude-pattern>
   <exclude-pattern>web/app/themes/harborn/public/*</exclude-pattern>
   <exclude-pattern>web/app/themes/sage/*</exclude-pattern>
   <exclude-pattern>web/app/themes/harborn/node_modules/*</exclude-pattern>
   <exclude-pattern>web/app/themes/harborn/vendor/*</exclude-pattern>
-  <exclude-pattern>web/wp/*</exclude-pattern> <exclude-pattern>web/app/cache/*</exclude-pattern>
-  <exclude-pattern>web/app/plugins/*</exclude-pattern> <exclude-pattern>*.min.js</exclude-pattern>
+  <exclude-pattern>web/wp/*</exclude-pattern>
+  <exclude-pattern>web/app/cache/*</exclude-pattern>
+  <exclude-pattern>web/app/plugins/*</exclude-pattern>
+  <exclude-pattern>*.min.js</exclude-pattern>
   <exclude-pattern>*.min.css</exclude-pattern>
   <exclude-pattern>*.map</exclude-pattern>
-
   <exclude-pattern>.git/*</exclude-pattern>
   <exclude-pattern>.vscode/*</exclude-pattern>
+  <exclude-pattern>web/app/languages/*</exclude-pattern>
+  <exclude-pattern>web/app/mu-plugins/*</exclude-pattern>
 
-  <arg name="extensions" value="php,css"/> </ruleset>
+  <arg name="extensions" value="php,css"/>
+</ruleset>

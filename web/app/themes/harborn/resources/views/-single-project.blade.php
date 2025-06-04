@@ -1,6 +1,10 @@
-<?php
-@extends( 'layouts.app' )
+{{--
+    Single Project Template
+    @package Harborn
+--}}
 
-@section( 'content' )
-	@require 'partials.content-single-project'
+@extends('layouts.app')
+
+@section('content')
+    @include('partials.content-single-project')
 @endsection

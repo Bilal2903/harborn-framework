@@ -1,7 +1,8 @@
 <?php
-
 /**
  * Theme setup.
+ *
+ * @package Harborn
  */
 
 namespace App;
@@ -48,6 +49,7 @@ add_filter(
 			}
 		}
 
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Vite output is trusted HTML.
 		echo Vite::withEntryPoints(
 			array(
 				'resources/js/editor.js',
@@ -64,9 +66,9 @@ add_filter(
 add_filter(
 	'theme_file_path',
 	function ( $path, $file ) {
-		return $file === 'theme.json'
-		? public_path( 'build/assets/theme.json' )
-		: $path;
+		return ( 'theme.json' === $file )
+			? public_path( 'build/assets/theme.json' )
+			: $path;
 	},
 	10,
 	2

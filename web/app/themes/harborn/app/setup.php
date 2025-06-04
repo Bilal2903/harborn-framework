@@ -40,15 +40,6 @@ add_filter(
 		if ( ! get_current_screen()?->is_block_editor() ) {
 			return;
 		}
-
-		// $dependencies = json_decode( Vite::content( 'editor.deps.json' ) );
-
-		// foreach ( $dependencies as $dependency ) {
-		// if ( ! wp_script_is( $dependency ) ) {
-		// wp_enqueue_script( $dependency );
-		// }
-		// }
-
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Vite output is trusted HTML.
 		echo Vite::withEntryPoints(
 			array(

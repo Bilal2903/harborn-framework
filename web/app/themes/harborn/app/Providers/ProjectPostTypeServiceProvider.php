@@ -77,9 +77,9 @@ class ProjectPostTypeServiceProvider extends ServiceProvider {
 				'show_ui'            => true,
 				'show_in_menu'       => true,
 				'query_var'          => true,
-				'rewrite'            => array( 'slug' => 'projects' ), // Important for permalinks
+				'rewrite'            => array( 'slug' => 'projects' ),
 				'capability_type'    => 'post',
-				'has_archive'        => true, // If you want an archive page for projects
+				'has_archive'        => true,
 				'hierarchical'       => false,
 				'menu_position'      => null,
 				'supports'           => array( 'title', 'editor', 'thumbnail', 'excerpt' ),

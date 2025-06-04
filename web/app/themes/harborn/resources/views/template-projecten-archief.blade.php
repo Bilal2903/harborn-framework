@@ -1,5 +1,5 @@
 {{--
-  Template Name: Projecten Archief
+  Template Name: Projects archive
 --}}
 @extends('layouts.app')
 
@@ -28,7 +28,7 @@
           {!! get_the_posts_navigation([ 'prev_text' => __('&larr; Vorige', 'sage'), 'next_text' => __('Volgende &rarr;', 'sage') ]) !!}
         </div>
       @else
-        <p class="project-archive__empty">{{ __('Geen berichten gevonden.', 'sage') }}</p>
+        <p class="project-archive__empty">{{ __('No projects found.', 'sage') }}</p>
       @endif
     </div>
   </div>

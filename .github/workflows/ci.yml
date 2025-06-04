@@ -47,6 +47,3 @@ jobs:
       - name: Lint JavaScript
         run: pnpm lint
         working-directory: ./web/app/themes/harborn
-
-      # - name: Run Codeception tests
-      #   run: ./vendor/bin/codecept run --no-interaction --coverage --coverage-xml

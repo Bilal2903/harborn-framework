@@ -18,8 +18,13 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.3'
-          extensions: mbstring, intl, pdo, pdo_mysql, dom, curl, json, zip
-          coverage: none
+          extensions: mbstring, intl, pdo, pdo_mysql, dom, curl, json, zip, xdebug
+          coverage: xdebug
+
+      - name: Enable Xdebug code coverage
+        run: |
+          echo "xdebug.mode=coverage,develop" >> $(php -i | grep 'Loaded Configuration File' | awk '{print $5}')
+          php --ri xdebug
 
       - name: Install Composer dependencies
         run: composer install --no-interaction --prefer-dist --no-progress

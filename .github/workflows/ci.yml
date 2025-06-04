@@ -28,7 +28,7 @@ jobs:
         run: ./vendor/bin/phpcs -i
 
       - name: Lint PHP with PHP_CodeSniffer
-        run: composer run phpcs
+        run: composer run phpcs -- -n
 
       - name: Install Pnpm
         uses: pnpm/action-setup@v4

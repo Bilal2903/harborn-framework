@@ -30,32 +30,136 @@
   <a href="https://roots.io/bedrock/">Website</a> &nbsp;&nbsp; <a href="https://roots.io/bedrock/docs/installation/">Documentation</a> &nbsp;&nbsp; <a href="https://github.com/roots/bedrock/releases">Releases</a> &nbsp;&nbsp; <a href="https://discourse.roots.io/">Community</a>
 </p>
 
-## Sponsors
-
-Bedrock is an open source project and completely free to use. If you've benefited from our projects and would like to support our future endeavors, please consider [sponsoring Roots](https://github.com/sponsors/roots).
-
-<div align="center">
-<a href="https://carrot.com/"><img src="https://cdn.roots.io/app/uploads/carrot.svg" alt="Carrot" width="120" height="90"></a> <a href="https://wordpress.com/"><img src="https://cdn.roots.io/app/uploads/wordpress.svg" alt="WordPress.com" width="120" height="90"></a> <a href="https://worksitesafety.ca/careers/"><img src="https://cdn.roots.io/app/uploads/worksite-safety.svg" alt="Worksite Safety" width="120" height="90"></a> <a href="https://www.itineris.co.uk/"><img src="https://cdn.roots.io/app/uploads/itineris.svg" alt="Itineris" width="120" height="90"></a> <a href="https://bonsai.so/"><img src="https://cdn.roots.io/app/uploads/bonsai.svg" alt="Bonsai" width="120" height="90"></a>
-</div>
+# Harborn Framework – Sage Starter Framework for Developers
 
 ## Overview
+A modern Docker-based starter framework for WordPress development. Includes automated database import/export, Composer and pnpm support, and a smooth onboarding process for teams.
 
-Bedrock is a WordPress boilerplate for developers that want to manage their projects with Git and Composer. Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](http://12factor.net/) methodology, including the [WordPress specific version](https://roots.io/twelve-factor-wordpress/).
+---
 
-- Better folder structure
-- Dependency management with [Composer](https://getcomposer.org)
-- Easy WordPress configuration with environment specific files
-- Environment variables with [Dotenv](https://github.com/vlucas/phpdotenv)
-- Autoloader for mu-plugins (use regular plugins as mu-plugins)
+## Quick Start Guide
 
-## Getting Started
+### 0. Clone the Repository
+```sh
+git clone <your-repo-url>
+cd harborn-framework
+```
 
-See the [Bedrock installation documentation](https://roots.io/bedrock/docs/installation/).
+### 1. Start Docker with Colima (macOS)
+```sh
+colima start
+```
 
-## Stay Connected
+### 2. Install PHP & JS Dependencies
+In the project root:
+```sh
+composer install
+```
 
-- Join us on Discord by [sponsoring us on GitHub](https://github.com/sponsors/roots)
-- Participate on [Roots Discourse](https://discourse.roots.io/)
-- Follow [@rootswp on Twitter](https://twitter.com/rootswp)
-- Read the [Roots Blog](https://roots.io/blog/)
-- Subscribe to the [Roots Newsletter](https://roots.io/newsletter/)
+In the theme directory:
+```sh
+cd web/app/themes/harborn
+composer install 
+pnpm install     
+cd ../../../..
+```
+
+### 3. Build and Start the Containers
+```sh
+docker-compose up --build
+```
+
+### 4. Import the Database
+If you have a `db.sql` file (or one shared by a teammate):
+```sh
+docker-compose exec php-fpm sh ./entrypoint.sh import
+```
+Or for a custom file:
+```sh
+docker-compose exec php-fpm sh ./entrypoint.sh import yourfile.sql
+```
+
+### 5. Access the Site
+- WordPress: http://<project-name>.local.harborn.com
+- phpMyAdmin: http://<project-name>-phpmyadmin.local.harborn.com:8081
+
+---
+
+## Project Structure
+- `docker-compose.yml` — All services (nginx, php-fpm, db, phpmyadmin, proxy)
+- `Dockerfile` — PHP-FPM container with WP-CLI and MySQL client
+- `entrypoint.sh` — Database import/export script
+- `db.sql` — Default database dump
+- `wp-cli.yml` — WP-CLI configuration
+- `web/` — WordPress core and custom code
+
+## Onboarding New Developers
+1. Clone the repo
+2. Start Colima
+3. Install Composer and pnpm dependencies
+4. Start containers
+5. Import the database
+6. Start developing!
+
+## Troubleshooting
+- SSL errors during import/export? The entrypoint script now automatically handles CA trust.
+- `mysqldump` errors? Rebuild the container after Dockerfile changes.
+- For production: always use SSL and trusted certificates.
+
+## Security Notes
+- The entrypoint script manages CA trust for local development only. Do not use this setup in production without adjustments.
+
+---
+
+## Testing with Codeception
+
+We use [Codeception](https://codeception.com/) for automated testing.
+
+### Acceptance & Unit Tests
+Run all tests:
+```sh
+vendor/bin/codecept run
+```
+Run only acceptance tests:
+```sh
+vendor/bin/codecept run acceptance
+```
+Run only unit tests:
+```sh
+vendor/bin/codecept run unit
+```
+Test results and coverage reports are saved in the `tests/_output/` directory.
+
+---
+
+## Linting (Theme)
+
+### PHP Linting
+- [Laravel Pint](https://laravel.com/docs/10.x/pint)
+- PHP_CodeSniffer (PHPCS)
+
+Lint with Pint (in the theme directory):
+```sh
+cd web/app/themes/harborn
+pnpm run pint
+```
+
+Lint with PHPCS (in project root):
+```sh
+composer run phpcs
+```
+
+### JavaScript/TypeScript Linting (ESLint)
+In the theme directory:
+```sh
+pnpm run lint
+```
+
+> **Tip:** Run both `composer run phpcs` (PHP) and `pnpm run lint` (JS/TS) locally before committing.
+
+### Continuous Integration (CI)
+On every commit and pull request, GitHub Actions will automatically run both PHP_CodeSniffer and ESLint checks. If any issues are found, the CI will fail and you will see the results in the GitHub UI.
+
+---
+For more details, see comments in each file or contact the project maintainer.
+

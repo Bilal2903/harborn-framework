@@ -20,7 +20,8 @@ RUN apk update && apk upgrade && apk add --no-cache \
     icu-dev \
     oniguruma-dev \
     libxml2-dev \
-    ca-certificates
+    ca-certificates \
+    mysql-client
 
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 

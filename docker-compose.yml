@@ -32,6 +32,8 @@ services:
       - '3306:3306'
     volumes:
       - db_data:/var/lib/mysql
+      - ./mysql-certs:/etc/mysql/certs:ro
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf:ro
 
   phpmyadmin:
     image: phpmyadmin

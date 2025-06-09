@@ -58,3 +58,25 @@
     z-index: 3;
   }
 }
+
+@media (max-width: 900px) {
+  .more-work-link-bg {
+    width: 100vw;
+    height: 60px;
+  }
+  .more-work-link {
+    margin-right: 0.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .more-work-link-bg {
+    width: 100vw;
+    height: 60px;
+  }
+  .more-work-link {
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+  }
+}

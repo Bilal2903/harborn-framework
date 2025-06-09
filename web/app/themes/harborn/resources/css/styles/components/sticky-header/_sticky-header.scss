@@ -64,4 +64,57 @@
       }
     }
   }
+
+  @media (max-width: 1100px) {
+    .sticky-header .sticky-header-content {
+      padding: 1.25rem 1rem;
+    }
+    .sticky-header .search-bar {
+      width: 300px;
+      .search-form,
+      input[type='search'],
+      .search-field {
+        max-width: 300px;
+        width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: 900px) {
+    .sticky-header .sticky-header-content {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+      position: relative;
+    }
+    .sticky-header .logo-sticky {
+      flex: 1 1 auto;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 0;
+    }
+    .search-bar {
+      display: none;
+    }
+    .sticky-header .hamburger-toggle {
+      display: flex !important;
+      position: static;
+      align-items: center;
+      margin-left: auto;
+      height: 48px;
+      margin-right: 18px;
+    }
+    .sticky-header .search-bar {
+      display: none;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .sticky-header .logo-sticky img,
+    .sticky-header .logo-sticky svg {
+      max-height: 36px;
+    }
+  }
 }
+

@@ -111,8 +111,8 @@ add_action( 'acf/init', 'my_acf_blocks_init' );
 add_action(
 	'after_setup_theme',
 	function () {
-		app()->register( \App\Providers\ProjectPostTypeServiceProvider::class ); // Legacy: for backward compatibility.
-		app()->register( \App\Providers\Projectposttypeserviceprovider::class ); // New: matches class name and file name.
+		app()->register( \App\Providers\ProjectPostTypeServiceProvider::class );
+		app()->register( \App\Providers\Projectposttypeserviceprovider::class );
 	}
 );
 

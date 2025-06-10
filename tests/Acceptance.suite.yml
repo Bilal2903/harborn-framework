@@ -10,7 +10,7 @@ modules:
             url: http://harborn-framework.local.harborn.com/
             browser: chrome
             host: 127.0.0.1
-            port: 62086
+            port: 9515
             path: /
 # Add Codeception\Step\Retry trait to AcceptanceTester to enable retries
 step_decorators:

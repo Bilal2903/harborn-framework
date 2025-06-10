@@ -5,16 +5,16 @@ import { initMegaMenu } from './mega-menu-logic.js';
 document.addEventListener('DOMContentLoaded', function () {
   const stickyHeader = document.getElementById('stickyHeader');
   const mainHeader = document.querySelector('header.banner');
-  const hamburger = document.querySelector('.hamburger-toggle');
+  const hamburgers = document.querySelectorAll('.hamburger-toggle');
   const megaMenuOverlay = document.getElementById('megaMenuOverlay');
   const megaMenuClose = document.querySelector('.mega-menu-close');
 
   const checkStickyHeader = initStickyHeader(stickyHeader, mainHeader);
-  const toggleHamburgerVisibility = initHamburgerToggle(
-    hamburger,
-    stickyHeader
-  );
-  initMegaMenu(hamburger, megaMenuOverlay, megaMenuClose);
+
+  hamburgers.forEach(hamburger => {
+    initHamburgerToggle(hamburger, stickyHeader);
+    initMegaMenu(hamburger, megaMenuOverlay, megaMenuClose);
+  });
 
   let ticking = false;
 
@@ -22,7 +22,12 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!ticking) {
       window.requestAnimationFrame(function () {
         checkStickyHeader();
-        toggleHamburgerVisibility();
+
+        hamburgers.forEach(hamburger => {
+          if (typeof hamburger.toggleHamburgerVisibility === 'function') {
+            hamburger.toggleHamburgerVisibility();
+          }
+        });
         ticking = false;
       });
       ticking = true;

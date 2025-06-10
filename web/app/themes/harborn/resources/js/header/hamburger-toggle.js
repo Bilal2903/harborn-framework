@@ -14,5 +14,7 @@ export function initHamburgerToggle(hamburger, stickyHeader) {
   // Initial call
   toggleHamburgerVisibility();
 
+  hamburger.toggleHamburgerVisibility = toggleHamburgerVisibility;
+
   return toggleHamburgerVisibility;
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2ebaaede41bbf925f776835c102f41f7",
+    "content-hash": "af5ee9489cd0baf859df91e4d9bb5557",
     "packages": [
         {
             "name": "brick/math",
@@ -4190,86 +4190,6 @@
                 }
             ],
             "time": "2020-05-20T01:25:07+00:00"
-        },
-        {
-            "name": "roots/sage",
-            "version": "v10.8.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/roots/sage.git",
-                "reference": "081782f05e53e123f7dd0760acaedf5345fd7beb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/roots/sage/zipball/081782f05e53e123f7dd0760acaedf5345fd7beb",
-                "reference": "081782f05e53e123f7dd0760acaedf5345fd7beb",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1"
-            },
-            "require-dev": {
-                "laravel/pint": "^1.13"
-            },
-            "suggest": {
-                "log1x/sage-directives": "A collection of useful Blade directives for WordPress and Sage (^1.0)."
-            },
-            "type": "wordpress-theme",
-            "extra": {
-                "acorn": {
-                    "providers": [
-                        "App\\Providers\\ThemeServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "App\\": "app/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ben Word",
-                    "email": "ben@benword.com",
-                    "homepage": "https://github.com/retlehs"
-                },
-                {
-                    "name": "Scott Walkinshaw",
-                    "email": "scott.walkinshaw@gmail.com",
-                    "homepage": "https://github.com/swalkinshaw"
-                },
-                {
-                    "name": "QWp6t",
-                    "email": "hi@qwp6t.me",
-                    "homepage": "https://github.com/qwp6t"
-                },
-                {
-                    "name": "Brandon Nifong",
-                    "email": "brandon@tendency.me",
-                    "homepage": "https://github.com/log1x"
-                }
-            ],
-            "description": "WordPress starter theme with a modern development workflow",
-            "homepage": "https://roots.io/sage/",
-            "keywords": [
-                "wordpress"
-            ],
-            "support": {
-                "forum": "https://discourse.roots.io/",
-                "issues": "https://github.com/roots/sage/issues",
-                "source": "https://github.com/roots/sage/tree/v10.8.2"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/roots",
-                    "type": "github"
-                }
-            ],
-            "time": "2024-02-06T14:48:58+00:00"
         },
         {
             "name": "roots/support",
@@ -11115,6 +11035,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "roots/acorn": 10,
         "roave/security-advisories": 20
     },
     "prefer-stable": true,
@@ -11122,6 +11043,6 @@
     "platform": {
         "php": ">=8.1"
     },
-    "platform-dev": {},
+    "platform-dev": [],
     "plugin-api-version": "2.6.0"
 }

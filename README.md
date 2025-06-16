@@ -44,6 +44,7 @@ A modern, Docker-based starter kit for WordPress development. Includes automated
    cd harborn-framework
    ```
 2. **Start Docker (Colima, macOS)**
+   > If you use Docker Desktop, you can skip this step. If you do not use Docker Desktop, starting Colima is essential because it provides the Linux environment required for Docker containers on macOS.
    ```sh
    colima start
    ```

@@ -74,8 +74,8 @@ A modern, Docker-based starter kit for WordPress development. Includes automated
    docker-compose exec php-fpm sh ./entrypoint.sh import yourfile.sql
    ```
 6. **Open the site**
-   - WordPress: http://<projectname>.local.harborn.com
-   - phpMyAdmin: http://<projectname>-phpmyadmin.local.harborn.com:8081
+   - WordPress: http://harborn-framework.local.harborn.com
+   - phpMyAdmin: http://harborn-framework-phpmyadmin.local.harborn.com
 
 ---
 
@@ -122,12 +122,6 @@ chromedriver --port=9515
 ### PHP Linting
 - [Laravel Pint](https://laravel.com/docs/10.x/pint) (for PHP in the theme)
 - PHP_CodeSniffer (PHPCS) (for PHP in the project root)
-
-Lint with Pint (in the theme directory):
-```sh
-cd web/app/themes/harborn
-pnpm run pint
-```
 
 Lint with PHPCS (in the project root):
 ```sh

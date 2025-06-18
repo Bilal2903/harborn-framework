@@ -60,6 +60,7 @@ RUN wp --info
 # Set PHP upload and post max sizes
 COPY docker-resources/upload_max_filesize.ini $PHP_INI_DIR/conf.d/
 COPY docker-resources/post_max_size.ini $PHP_INI_DIR/conf.d/
+COPY ./docker-resources/php-fpm/www.conf /usr/local/etc/php-fpm.d/www.conf
 
 # Permissions
 RUN chown -R www-data:www-data /var/www/html
@@ -70,13 +71,9 @@ RUN apk del --purge $(apk info --installed | grep "*-dev$") && rm -rf /var/cache
 WORKDIR /var/www/html
 
 # Copy your composer.json and composer.lock files
-# Copy these before the rest of your application code to leverage Docker's build cache
 COPY composer.json composer.lock ./
 
 # Run composer install to install dependencies
-# --no-dev: Skips installing require-dev dependencies (good for production)
-# --optimize-autoloader: Optimizes the autoloader for faster loading
-# --no-scripts: Prevents execution of scripts defined in composer.json during install
 RUN composer install --no-dev --optimize-autoloader --no-scripts
 
 EXPOSE 8080

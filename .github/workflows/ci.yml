@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, intl, pdo, pdo_mysql, dom, curl, json, zip, xdebug
+          coverage: xdebug
+
+      - name: Enable Xdebug code coverage
+        run: |
+          echo "xdebug.mode=coverage,develop" >> $(php -i | grep 'Loaded Configuration File' | awk '{print $5}')
+          php --ri xdebug
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      - name: Show available coding standards
+        run: ./vendor/bin/phpcs -i
+
+      - name: Lint PHP with PHP_CodeSniffer
+        run: composer run phpcs -- -n
+
+      - name: Install Pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Install Pnpm theme dependencies
+        run: pnpm install --no-frozen-lockfile
+        working-directory: ./web/app/themes/harborn
+
+      - name: Lint JavaScript
+        run: pnpm lint
+        working-directory: ./web/app/themes/harborn

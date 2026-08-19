@@ -1,15 +1,3 @@
-# FROM node:20 as front-end
-
-# ENV COREPACK_DEFAULT_TO_LATEST=0
-# RUN corepack enable pnpm
-
-# WORKDIR /var/www/html
-# COPY . .
-# RUN if [ -f package.json ]; then \
-#     pnpm install && \
-#     pnpm run build; fi
-
-# syntax=docker/dockerfile:1.4
 ARG TRAEFIK_VERSION=v2.7
 FROM traefik:${TRAEFIK_VERSION} AS traefik
 
@@ -18,7 +6,7 @@ COPY docker-resources/traefik/traefik.yaml.template /etc/traefik/traefik.yaml.te
 
 CMD /bin/sh -c "envsubst < /etc/traefik/traefik.yaml.template > /etc/traefik/traefik.yaml && /usr/local/bin/traefik"
 
-FROM php:8.2-fpm-alpine AS php
+FROM php:8.3-fpm-alpine AS php
 
 RUN apk update && apk upgrade && apk add --no-cache \
     git \
@@ -32,7 +20,8 @@ RUN apk update && apk upgrade && apk add --no-cache \
     icu-dev \
     oniguruma-dev \
     libxml2-dev \
-    ca-certificates
+    ca-certificates \
+    mysql-client
 
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 
@@ -67,9 +56,6 @@ RUN mv wp-cli.phar /usr/local/bin/wp
 
 # Verify WP-CLI installation (optional, but good for debugging)
 RUN wp --info
-
-# # Enable Imagick
-# RUN pecl install imagick && docker-php-ext-enable imagick
 
 # Set PHP upload and post max sizes
 COPY docker-resources/upload_max_filesize.ini $PHP_INI_DIR/conf.d/

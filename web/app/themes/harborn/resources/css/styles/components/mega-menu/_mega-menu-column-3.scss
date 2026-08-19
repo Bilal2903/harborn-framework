@@ -1,0 +1,146 @@
+@use '../../harborn-style-guide/harborn-typography' as typography;
+@use '../../harborn-style-guide/harborn-colorpalet' as color;
+
+.mega-menu-column-3 {
+  background-color: color.$color-harborn-dark;
+  overflow: hidden;
+  padding: 10rem 4rem 3rem 4rem;
+  color: color.$color-harborn-greyblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  transform: translateX(100%);
+  opacity: 0;
+
+  .mega-menu-heading-menu {
+    @include typography.harborn-typography('chapeau');
+    color: color.$color-harborn-greyblue;
+    margin-bottom: 1.5rem;
+    font-size: 0.8rem;
+  }
+
+  .mega-menu-socials-wrapper {
+    margin-bottom: 3rem;
+    width: 100%;
+  }
+
+  .social-links__list {
+    list-style: none;
+    padding-top: 20px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    a {
+      color: color.$color-black;
+      text-decoration: none;
+      transition: color 0.2s ease-in-out;
+      font-weight: typography.$font-weight-space-grotesk-light;
+
+      &:hover {
+        color: color.$color-harborn-lime;
+      }
+    }
+
+    .social-links__item {
+      margin-bottom: 0;
+
+      a {
+        display: flex;
+        align-items: center;
+        gap: 3.5rem;
+        font-weight: typography.$font-weight-space-grotesk-light;
+        font-size: 1.5rem;
+        line-height: 1.2;
+        color: color.$color-white;
+        text-decoration: none;
+        transition: color 0.2s ease-in-out;
+
+        &:hover {
+          color: color.$color-harborn-lime;
+        }
+      }
+    }
+  }
+
+  .language-switcher__item--current::after {
+    display: none;
+  }
+
+  .language-switcher__item--current::after {
+    display: none;
+  }
+
+  .mega-menu-language-selector {
+    margin-top: 4rem;
+
+    .language-switcher {
+      margin-top: 4rem;
+      border: none;
+
+      &__dropdown {
+        display: none;
+      }
+
+      .language-switcher__list {
+        display: flex;
+        gap: 3.75rem;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+
+      .language-switcher__item {
+        margin: 0;
+
+        .language-switcher__link {
+          border: 1px solid color.$color-white;
+          padding: 0.5rem 1rem;
+          background: transparent;
+          cursor: pointer;
+          color: color.$color-white;
+          border-radius: 5px;
+          text-decoration: none;
+          transition:
+            background-color 0.2s ease,
+            color 0.2s ease,
+            border-color 0.2s ease;
+          display: block;
+          @include typography.harborn-typography('body-text');
+          font-size: 1rem;
+
+          &:hover {
+            background-color: color.$color-harborn-lime;
+            border-color: color.$color-harborn-lime;
+            color: color.$color-white;
+          }
+        }
+
+        &.language-switcher__item--current {
+          .language-switcher__link {
+            border-color: color.$color-harborn-lime;
+            background-color: transparent;
+            color: color.$color-white;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 900px) {
+    transform: translateX(0);
+    opacity: 1;
+    animation: none;
+    padding: 2rem 1.5rem;
+
+    .social-links__item a {
+      font-size: 1rem;
+    }
+
+    .mega-menu-language-selector .language-switcher .language-switcher__link {
+      padding: 0.4rem 0.8rem;
+    }
+  }
+}

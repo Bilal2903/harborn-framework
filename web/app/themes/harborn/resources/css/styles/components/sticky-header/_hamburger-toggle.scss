@@ -1,0 +1,48 @@
+@use '../../harborn-style-guide/harborn-typography' as typography;
+@use '../../harborn-style-guide/harborn-colorpalet' as color;
+
+.hamburger-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  background: color.$color-white;
+  border: none;
+  cursor: pointer;
+  z-index: 1100;
+  padding: 0;
+  position: relative;
+
+  span {
+    display: block;
+    height: 3px;
+    width: 28px;
+    background: color.$color-harborn-darkblue;
+    margin: 4px 0;
+    border-radius: 2px;
+    transition:
+      transform 0.3s ease-in-out,
+      opacity 0.3s ease-in-out;
+  }
+
+  &:focus {
+    outline: 2px solid color.$color-harborn-lime;
+  }
+
+  &.is-active {
+    background: color.$color-white;
+    span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    span:nth-child(2) {
+      opacity: 0;
+    }
+
+    span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+  }
+}

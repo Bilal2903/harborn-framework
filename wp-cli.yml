@@ -1,3 +1,8 @@
 path: web/wp
 server:
   docroot: web
+mysql:
+  ssl-ca: /var/www/html/mysql-certs/ca.pem
+  ssl-cert: /var/www/html/mysql-certs/client-cert.pem
+  ssl-key: /var/www/html/mysql-certs/client-key.pem
+  ssl-mode: VERIFY_CA

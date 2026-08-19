@@ -1,0 +1,82 @@
+@use '../../harborn-style-guide/harborn-typography' as typography;
+@use '../../harborn-style-guide/harborn-colorpalet' as color;
+
+.more-work-link {
+  @include typography.harborn-typography('intro');
+  color: color.$color-black;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.25rem;
+  margin-right: 2rem;
+  margin-top: 1rem;
+  text-decoration: none;
+
+  svg,
+  i,
+  .arrow {
+    font-size: 1rem !important;
+    width: 1rem !important;
+    height: 1rem !important;
+  }
+}
+
+.more-work-link-bg {
+  width: 587px;
+  height: 100px;
+  background: color.$color-harborn-beige;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  overflow: hidden;
+  transition: background 0.3s linear;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0%;
+    height: 100%;
+    background: color.$color-harborn-lime;
+    z-index: 2;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+  &:hover::before {
+    width: 100%;
+    left: 0;
+    right: auto;
+  }
+  a {
+    position: relative;
+    z-index: 3;
+  }
+}
+
+@media (max-width: 900px) {
+  .more-work-link-bg {
+    width: 100vw;
+    height: 60px;
+  }
+  .more-work-link {
+    margin-right: 0.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .more-work-link-bg {
+    width: 100vw;
+    height: 60px;
+  }
+  .more-work-link {
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+  }
+}

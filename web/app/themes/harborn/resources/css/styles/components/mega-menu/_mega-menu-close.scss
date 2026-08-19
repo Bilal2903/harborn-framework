@@ -1,0 +1,33 @@
+@use '../../harborn-style-guide/harborn-colorpalet' as color;
+
+.mega-menu-close {
+  position: absolute;
+  top: 4rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: color.$color-white;
+  color: color.$color-harborn-darkblue;
+  border: none;
+  border-radius: 15px;
+  font-size: 2.5rem;
+  cursor: pointer;
+  z-index: 2100;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;
+
+  &:focus {
+    outline: 2px solid color.$color-harborn-lime;
+  }
+
+  @media (max-width: 900px) {
+    top: 4rem;
+    right: 1rem;
+    color: color.$color-harborn-darkblue;
+  }
+}

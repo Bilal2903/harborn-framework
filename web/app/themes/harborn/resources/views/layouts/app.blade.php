@@ -14,6 +14,8 @@
 
     <div id="app">
       @include('sections.header')
+      @include('partials.header-mega-menu')
+      @include('partials.header-sticky')
 
       @hasSection('hero')
         @yield('hero')
@@ -23,11 +25,13 @@
         @yield('content')
       </main>
 
-      @hasSection('sidebar')
+      <!-- @hasSection('sidebar')
         <aside class="sidebar">
           @yield('sidebar')
         </aside>
-      @endif
+      @endif -->
+
+      <x-back-to-top-button />
 
       @include('sections.footer')
     </div>

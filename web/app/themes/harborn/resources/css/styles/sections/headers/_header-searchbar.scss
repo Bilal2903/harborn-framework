@@ -17,12 +17,28 @@
   border: none;
   outline: none;
   color: color.$color-white;
-  @include typography.harborn-typography("body-text");
+  @include typography.harborn-typography('body-text');
   font-size: 12pt;
   padding: 5px;
   flex-grow: 1;
   &::placeholder {
     color: rgba(color.$color-white, 0.6);
+  }
+}
+
+input[type='search'],
+.search-field {
+  width: 100%;
+  flex-grow: 1;
+  padding: 0.75rem 1rem;
+  @include typography.harborn-typography('body-text');
+  font-size: 1rem;
+  background: none;
+  border: none;
+  outline: none;
+
+  &::placeholder {
+    color: color.$color-white;
   }
 }
 
@@ -35,7 +51,7 @@
   padding: 0;
   &:before {
     content: '\1F50D';
-    @include typography.harborn-typography("body-text");
+    @include typography.harborn-typography('body-text');
     font-size: 1.2em;
   }
   .search-submit {
@@ -43,6 +59,12 @@
       @extend .sr-only !optional;
     }
   }
+}
+
+.search-bar button,
+.wp-block-search__button,
+.search-form .search-submit {
+  display: none !important;
 }
 
 @media (max-width: 500px) {

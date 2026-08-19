@@ -2,9 +2,9 @@
 @use '../../harborn-style-guide/harborn-colorpalet' as color;
 
 .banner {
-  position: fixed;
+  position: absolute;
   background-color: transparent;
-  width: 100%;
+  width: 99%;
   z-index: 1000;
   padding: 1.5rem 0;
   color: color.$color-harborn-darkblue;
@@ -42,8 +42,40 @@ body.has-hero-header-overlay {
 
 @media (max-width: 900px) {
   .banner .container {
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    position: relative;
+  }
+
+  .logo {
+    flex: 1 1 auto;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 0;
+  }
+
+  .hamburger-toggle {
+    display: flex !important;
+    position: static;
+    align-items: center;
+    margin-left: auto;
+    height: 48px;
+    margin-right: 18px;
+  }
+
+  .nav-primary,
+  .header-actions {
+    display: none !important;
+  }
+}
+
+.d-desktop-none {
+  display: none;
+}
+@media (max-width: 900px) {
+  .d-desktop-none {
+    display: flex !important;
   }
 }

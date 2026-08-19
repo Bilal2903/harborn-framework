@@ -1,0 +1,39 @@
+@use '../../harborn-style-guide/harborn-typography' as typography;
+@use '../../harborn-style-guide/harborn-colorpalet' as color;
+
+.carousel-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: color.$color-harborn-lime;
+  color: color.$color-harborn-darkblue;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 2;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+  font-family: inherit;
+  @include typography.harborn-typography('body-text');
+  transition: background 0.2s;
+  mix-blend-mode: normal;
+}
+
+.carousel-cursor__text {
+  color: color.$color-harborn-darkblue;
+  @include typography.harborn-typography('body-text');
+  user-select: none;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  font-size: 1.1rem;
+}

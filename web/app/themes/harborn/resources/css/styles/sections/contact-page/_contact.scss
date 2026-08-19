@@ -1,0 +1,154 @@
+@use '../../harborn-style-guide/harborn-typography' as typography;
+@use '../../harborn-style-guide/harborn-colorpalet' as color;
+
+.contact-page {
+  padding: 3rem 0 4rem 0;
+  max-width: 70%;
+  margin: 20px 0 auto;
+  padding-left: 40px;
+  padding-right: 40px;
+
+  .wp-block-group {
+    margin-bottom: 2rem;
+    padding: 2rem 2.5rem 1.5rem 0;
+    padding-right: 20px;
+  }
+
+  .wp-block-group > .has-medium-font-size,
+  .has-large-font-size {
+    @include typography.harborn-typography('intro');
+    color: color.$color-black;
+    font-size: 2rem;
+    font-weight: typography.$font-weight-space-grotesk-regular;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.01em;
+    padding: 0;
+  }
+
+  .wp-block-group > .wp-block-group p,
+  .wp-block-group p.has-large-font-size {
+    @include typography.harborn-typography('body-text');
+    color: color.$color-black;
+    font-size: 1.25rem;
+    font-weight: typography.$font-weight-space-grotesk-regular;
+    margin: 0 0 0.5rem 0;
+    padding: 0;
+    letter-spacing: 0.01em;
+    line-height: 1.5;
+  }
+
+  a {
+    color: color.$color-black;
+    text-decoration: none;
+    border-bottom: 2px solid color.$color-harborn-darkblue;
+    transition: border-color 0.2s, color 0.2s;
+    font-size: 1.25rem;
+    font-weight: typography.$font-weight-space-grotesk-regular;
+    &:hover,
+    &:focus {
+      border-bottom: 2px solid color.$color-harborn-lime;
+      color: color.$color-harborn-lime;
+    }
+  }
+
+  .has-text-align-right {
+    text-align: left;
+    color: color.$color-harborn-darkblue;
+    font-weight: typography.$font-weight-space-grotesk-regular;
+    margin: 0;
+    padding: 0;
+  }
+
+  .wp-block-spacer {
+    height: 24px !important;
+  }
+
+  .wp-block-image {
+    display: flex;
+    justify-content: left;
+    margin: 2rem 0 1.5rem 0;
+    img {
+      box-shadow: 0 2px 16px rgba(color.$color-black, 0.07);
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  .wp-block-group:last-of-type {
+    .has-medium-font-size {
+      color: color.$color-black;
+    }
+    p {
+      color: color.$color-black;
+      font-weight: typography.$font-weight-space-grotesk-regular;
+    }
+  }
+
+  .wp-block-group.is-layout-flex,
+  .wp-block-group.is-nowrap {
+    flex-direction: row;
+    gap: 2rem;
+    @media (max-width: 1150px) {
+      flex-direction: column !important;
+      gap: 0.5rem;
+      align-items: flex-start;
+    }
+  }
+
+  .has-large-font-size,
+  .wp-block-group > .has-medium-font-size {
+    font-size: clamp(1.05rem, 2vw + 1rem, 2rem);
+  }
+  .contact-page .has-large-font-size {
+    font-size: clamp(1.05rem, 2vw + 1rem, 2rem) !important;
+  }
+  .wp-block-group > .wp-block-group p,
+  .wp-block-group p.has-large-font-size {
+    font-size: clamp(0.89rem, 1vw + 0.8rem, 1.25rem);
+  }
+  a {
+    font-size: clamp(0.89rem, 1vw + 0.8rem, 1.25rem);
+  }
+}
+
+@media (max-width: 900px) {
+  .contact-page {
+    padding: 1.5rem 0 2rem 0;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    .wp-block-group {
+      padding: 1.2rem 0.5rem 1rem 0.5rem;
+    }
+    .wp-block-group > .has-medium-font-size,
+    .has-large-font-size {
+      font-size: 1.3rem;
+    }
+    .wp-block-group > .wp-block-group p,
+    .wp-block-group p.has-large-font-size,
+    a {
+      font-size: 0.98rem;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-page {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    .wp-block-group {
+      padding: 1rem 0 1rem 0;
+    }
+    .wp-block-image img {
+      border-radius: 8px;
+    }
+    .wp-block-group > .has-medium-font-size,
+    .has-large-font-size {
+      font-size: 1.05rem;
+    }
+    .wp-block-group > .wp-block-group p,
+    .wp-block-group p.has-large-font-size,
+    a {
+      font-size: 0.89rem;
+    }
+  }
+}

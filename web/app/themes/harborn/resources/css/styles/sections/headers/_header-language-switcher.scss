@@ -32,7 +32,7 @@
   &__link {
     text-decoration: none;
     color: color.$color-white;
-    @include typography.harborn-typography("body-text");
+    @include typography.harborn-typography('body-text');
     font-size: 14pt;
     font-weight: typography.$font-weight-space-grotesk-regular;
     padding-right: 0.5rem;
@@ -43,14 +43,20 @@
     margin: 0;
     padding: 0;
     position: absolute;
-    top: calc(100% + 5px);
-    left: 0;
-    min-width: 100%;
-    background-color: rgba(color.$color-white, 0.9);
+    top: calc(100% + 15px);
+    left: 50%;
+    min-width: 80px;
+    width: 80px;
+    transform: translateX(-50%);
+    background-color: rgba(color.$color-harborn-dark, 0.9);
+
     border: 1px solid color.$color-black;
     border-radius: 8px;
     box-shadow: rgba(color.$color-black, 0.2);
-    display: none;
+    opacity: 0;
+    pointer-events: none;
+    display: block;
+    transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 3000;
     overflow: hidden;
   }
@@ -71,19 +77,20 @@
     padding: 0.75rem 1rem;
     text-decoration: none;
     color: color.$color-white;
-    @include typography.harborn-typography("body-text");
+    @include typography.harborn-typography('body-text');
     font-size: 14pt;
     font-weight: typography.$font-weight-space-grotesk-regular;
     transition: background-color 0.5s ease;
-  
 
     &:hover {
-      background-color: rgba(color.$color-white, 0.2);
+      background-color: color.$color-harborn-lime;
+      color: color.$color-black;
     }
   }
 
   &:hover &__dropdown {
-    display: block;
+    opacity: 1;
+    pointer-events: auto;
   }
 }
 
@@ -102,6 +109,7 @@
 
 .language-switcher:hover .language-switcher__item--current::after {
   transform: rotate(180deg);
+  border-top: 4px solid color.$color-harborn-lime;
 }
 
 .sr-only {

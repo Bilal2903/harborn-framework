@@ -1,0 +1,17 @@
+{
+  "name": "acf/hero-block",
+  "title": "Hero Block",
+  "description": "A custom hero section block.",
+  "category": "layout",
+  "icon": "align-wide",
+  "keywords": [ "hero", "header", "banner", "custom" ],
+  "supports": {
+    "align": true,
+    "multiple": true,
+    "inserter": true
+  },
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "blocks/hero-block/hero-template.blade.php"
+  }
+}

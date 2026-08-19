@@ -1,4 +1,8 @@
-@use 'styles/harborn-style-guide';
-@use 'styles/sections/headers';
-@use 'styles/sections/footer';
-@use 'styles/blocks';
+@use 'styles/sections/hero';
+@use 'styles/sections/header';
+@use 'styles/sections/header-logo';
+@use 'styles/sections/header-nav';
+@use 'styles/sections/header-language-changer';
+@use 'styles/harborn-style-guide/harborn-colorpalet';
+@use 'styles/harborn-style-guide/harborn-typography';
+@use 'styles/sections/header-searchbar';

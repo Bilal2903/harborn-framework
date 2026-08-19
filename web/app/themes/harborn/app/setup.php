@@ -155,3 +155,14 @@ add_action('widgets_init', function () {
         'id' => 'sidebar-footer',
     ] + $config);
 });
+
+// --- ACF Block Registratie ---
+/**
+ * Register ACF Blocks.
+ *
+ * @return void
+ */
+add_action('init', function () {
+    // Hero Block
+    register_block_type(get_theme_file_path('blocks/hero-block'));
+});

@@ -12,6 +12,6 @@
   },
   "acf": {
     "mode": "preview",
-    "renderTemplate": "blocks/hero-block/hero-template.blade.php"
+    "renderTemplate": "hero-block.php"
   }
 }

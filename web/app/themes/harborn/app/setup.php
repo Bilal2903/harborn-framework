@@ -187,6 +187,8 @@ add_action(
 add_action(
 	'init',
 	function () {
-		register_block_type( get_theme_file_path( 'blocks/hero-block' ) );
+		foreach ( array( 'hero-block', 'carousel' ) as $block ) {
+			register_block_type( get_theme_file_path( "blocks/{$block}" ) );
+		}
 	}
 );

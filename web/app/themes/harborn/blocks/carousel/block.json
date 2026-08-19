@@ -1,0 +1,17 @@
+{
+  "name": "acf/carousel",
+  "title": "Carousel",
+  "description": "A carousel showing published projects.",
+  "category": "media",
+  "icon": "images-alt2",
+  "keywords": ["carousel", "slider", "projects"],
+  "supports": {
+    "align": true,
+    "multiple": true,
+    "inserter": true
+  },
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "carousel.php"
+  }
+}

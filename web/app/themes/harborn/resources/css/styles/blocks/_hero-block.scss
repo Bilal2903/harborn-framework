@@ -1,0 +1,64 @@
+.hero-block {
+  padding: 60px 0;
+  text-align: left;
+  background-image: url('/Users/bilal/dev/harborn-framework/web/app/themes/harborn/resources/images/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  position: relative;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    margin-top: 0;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+
+  p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  }
+
+  &.hero-block--alt-style {
+    background-color: #e6f7ff;
+    color: #003366;
+    background-image: none;
+    h1 {
+      color: #003366;
+      text-shadow: none;
+    }
+    p {
+      color: #003366;
+      text-shadow: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2.5em;
+    }
+    p {
+      font-size: 1.1em;
+    }
+  }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 2em;
+    }
+  }
+}

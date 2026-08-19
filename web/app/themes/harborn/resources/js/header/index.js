@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const checkStickyHeader = initStickyHeader(stickyHeader, mainHeader);
 
-  hamburgers.forEach(hamburger => {
+  hamburgers.forEach((hamburger) => {
     initHamburgerToggle(hamburger, stickyHeader);
     initMegaMenu(hamburger, megaMenuOverlay, megaMenuClose);
   });
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
       window.requestAnimationFrame(function () {
         checkStickyHeader();
 
-        hamburgers.forEach(hamburger => {
+        hamburgers.forEach((hamburger) => {
           if (typeof hamburger.toggleHamburgerVisibility === 'function') {
             hamburger.toggleHamburgerVisibility();
           }

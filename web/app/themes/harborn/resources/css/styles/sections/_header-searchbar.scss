@@ -1,0 +1,52 @@
+@use '../harborn-style-guide/harborn-typography' as typography;
+@use '../harborn-style-guide/harborn-colorpalet' as color;
+
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 2px solid rgba(color.$color-black, 0.4);
+  border-radius: 15px;
+  padding: 0.8rem 1rem;
+  background-color: rgba(color.$color-white, 0.2);
+  width: 300px;
+}
+
+.search-bar .search-field {
+  background: none;
+  border: none;
+  outline: none;
+  color: color.$color-black;
+  @include typography.harborn-typography("body-text");
+  font-size: 12pt;
+  padding: 5px;
+  flex-grow: 1;
+  &::placeholder {
+    color: rgba(color.$color-black, 0.6);
+  }
+}
+
+.search-bar .search-submit {
+  background: none;
+  border: none;
+  color: color.$color-white;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  &:before {
+    content: '\1F50D';
+    @include typography.harborn-typography("body-text");
+    font-size: 1.2em;
+  }
+  .search-submit {
+    span {
+      @extend .sr-only !optional;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .search-bar {
+    width: 100%;
+  }
+}

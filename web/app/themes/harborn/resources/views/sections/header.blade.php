@@ -34,6 +34,3 @@
     </div>
   </div>
 </header>
-
-@include('partials.header-mega-menu')
-@include('partials.header-sticky')

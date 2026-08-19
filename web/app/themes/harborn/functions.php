@@ -68,16 +68,6 @@ collect( array( 'setup', 'filters' ) )
 	);
 
 /**
- * Enqueue GSAP and custom scripts
- */
-function theme_gsap_script() {
-	wp_enqueue_script( 'gsap-js', 'https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js', array(), '3.13.0', true );
-	wp_enqueue_script( 'gsap-custom', get_template_directory_uri() . '/resources/js/carousel/carousel.js', array( 'gsap-js' ), '1.0.0', true );
-	wp_enqueue_script( 'swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js', array(), '11.0.0', true );
-}
-add_action( 'wp_enqueue_scripts', 'theme_gsap_script' );
-
-/**
  * Mega Menu navigation location registration.
  */
 add_action(

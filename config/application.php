@@ -138,9 +138,11 @@ Config::define( 'CONCATENATE_SCRIPTS', false );
 /**
  * Debugging Settings.
  */
-Config::define( 'WP_DEBUG_DISPLAY', true );
-Config::define( 'WP_DEBUG_LOG', true );
-Config::define( 'SCRIPT_DEBUG', true );
+// Keep production errors out of the page and use minified WordPress assets.
+// Development overrides these values in config/environments/development.php.
+Config::define( 'WP_DEBUG_DISPLAY', false );
+Config::define( 'WP_DEBUG_LOG', false );
+Config::define( 'SCRIPT_DEBUG', false );
 
 /**
  * Allow WordPress to detect HTTPS when used behind a reverse proxy or a load balancer.

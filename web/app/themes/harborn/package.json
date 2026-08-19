@@ -24,6 +24,7 @@
     "@roots/vite-plugin": "^1.0.2",
     "@tailwindcss/vite": "^4.0.9",
     "@wordpress/eslint-plugin": "^22.10.0",
+    "create-acf-block": "^0.7.3",
     "eslint": "^9.28.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-import-resolver-node": "^0.3.9",

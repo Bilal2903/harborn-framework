@@ -187,8 +187,14 @@ add_action(
 add_action(
 	'init',
 	function () {
-		foreach ( array( 'hero-block', 'carousel' ) as $block ) {
-			register_block_type( get_theme_file_path( "blocks/{$block}" ) );
+		$block_metadata_files = glob( get_theme_file_path( 'blocks/*/block.json' ) );
+
+		if ( false === $block_metadata_files ) {
+			return;
+		}
+
+		foreach ( $block_metadata_files as $block_metadata_file ) {
+			register_block_type( dirname( $block_metadata_file ) );
 		}
 	}
 );

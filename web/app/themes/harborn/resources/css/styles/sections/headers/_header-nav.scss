@@ -18,7 +18,7 @@
   .menu-item > a {
     text-decoration: none;
     @include typography.harborn-typography("body-text");
-    color: color.$color-black;
+    color: color.$color-white;
     font-size: 12pt;
     font-weight: typography.$font-weight-space-grotesk-regular;
     opacity: 1;

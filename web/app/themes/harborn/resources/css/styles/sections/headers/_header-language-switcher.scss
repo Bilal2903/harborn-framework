@@ -3,7 +3,7 @@
 
 .language-switcher {
   position: relative;
-  border: 1px solid color.$color-black;
+  border: 1px solid color.$color-white;
   border-radius: 10px;
   padding: 1.4rem 0.5rem;
   background-color: transparent;
@@ -13,6 +13,7 @@
   justify-content: center;
   min-width: 60px;
   white-space: nowrap;
+  z-index: 2;
 
   &__list {
     list-style: none;
@@ -30,7 +31,7 @@
 
   &__link {
     text-decoration: none;
-    color: color.$color-black;
+    color: color.$color-white;
     @include typography.harborn-typography("body-text");
     font-size: 14pt;
     font-weight: typography.$font-weight-space-grotesk-regular;
@@ -50,7 +51,7 @@
     border-radius: 8px;
     box-shadow: rgba(color.$color-black, 0.2);
     display: none;
-    z-index: 1000;
+    z-index: 3000;
     overflow: hidden;
   }
 
@@ -69,7 +70,7 @@
     display: block;
     padding: 0.75rem 1rem;
     text-decoration: none;
-    color: color.$color-black;
+    color: color.$color-white;
     @include typography.harborn-typography("body-text");
     font-size: 14pt;
     font-weight: typography.$font-weight-space-grotesk-regular;

@@ -8,6 +8,8 @@ namespace App;
 
 use Illuminate\Support\Facades\Vite;
 
+add_filter( 'doing_it_wrong_trigger_error', '__return_false' );
+
 /**
  * Inject styles into the block editor.
  *

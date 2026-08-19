@@ -2,12 +2,17 @@
 @use '../../harborn-style-guide/harborn-colorpalet' as color;
 
 .banner {
+  position: fixed;
   background-color: transparent;
-  top: 0;
-  left: 0;
   width: 100%;
   z-index: 1000;
   padding: 1.5rem 0;
+  color: color.$color-harborn-darkblue;
+
+  .site-title a,
+  .main-navigation a {
+    color: inherit;
+  }
 }
 
 .banner .container {
@@ -16,6 +21,17 @@
   align-items: center;
   max-width: 1800px;
   padding: 0 30px;
+}
+
+body.has-hero-header-overlay {
+  .banner {
+    color: color.$color-white;
+
+    .site-title a,
+    .main-navigation a {
+      color: color.$color-white;
+    }
+  }
 }
 
 @media (max-width: 1100px) {

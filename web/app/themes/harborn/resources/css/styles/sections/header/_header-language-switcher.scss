@@ -1,0 +1,121 @@
+@use '../../harborn-style-guide/harborn-typography' as typography;
+@use '../../harborn-style-guide/harborn-colorpalet' as color;
+
+.language-switcher {
+  position: relative;
+  border: 1px solid color.$color-black;
+  border-radius: 10px;
+  padding: 1.4rem 0.5rem;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  white-space: nowrap;
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  &__item--current {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: color.$color-black;
+    @include typography.harborn-typography("body-text");
+    font-size: 14pt;
+    font-weight: typography.$font-weight-space-grotesk-regular;
+    padding-right: 0.5rem;
+  }
+
+  &__dropdown {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    min-width: 100%;
+    background-color: rgba(color.$color-white, 0.9);
+    border: 1px solid color.$color-black;
+    border-radius: 8px;
+    box-shadow: rgba(color.$color-black, 0.2);
+    display: none;
+    z-index: 1000;
+    overflow: hidden;
+  }
+
+  &__dropdown-item {
+    &:last-child {
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+    &:first-child {
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+  }
+
+  &__dropdown-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    color: color.$color-black;
+    @include typography.harborn-typography("body-text");
+    font-size: 14pt;
+    font-weight: typography.$font-weight-space-grotesk-regular;
+    transition: background-color 0.5s ease;
+  
+
+    &:hover {
+      background-color: rgba(color.$color-white, 0.2);
+    }
+  }
+
+  &:hover &__dropdown {
+    display: block;
+  }
+}
+
+.language-switcher__item--current::after {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+  border-top: 4px solid color.$color-black;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  transition: transform 0.3s ease;
+}
+
+.language-switcher:hover .language-switcher__item--current::after {
+  transform: rotate(180deg);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@media (max-width: 500px) {
+  .language-switcher {
+    width: 100%;
+  }
+}

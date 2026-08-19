@@ -1,0 +1,33 @@
+@use '../../harborn-style-guide/' as typography;
+@use '../../harborn-style-guide/harborn-colorpalet' as color;
+
+.logo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.logo img {
+  max-width: 100%;
+  height: auto;
+  max-width: 200px;
+}
+
+@media (max-width: 900px) {
+  .logo {
+    width: auto;
+    margin-bottom: 1rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .logo img {
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo img {
+    max-width: 120px;
+  }
+}

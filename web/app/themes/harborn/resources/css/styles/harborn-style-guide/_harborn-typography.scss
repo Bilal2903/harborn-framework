@@ -1,0 +1,51 @@
+// Font Families
+$font-family-space-grotesk: 'Space Grotesk', sans-serif;
+$font-family-dm-serif: 'DM Serif Text', serif;
+
+// Alternative Font Families (fallback)
+$font-family-space-grotesk-fallback: Helvetica, Arial, sans-serif;
+$font-family-dm-serif-fallback: 'Times New Roman', Times, serif;
+
+// Font Weights (Space Grotesk)
+$font-weight-space-grotesk-light: 300;
+$font-weight-space-grotesk-regular: 400;
+$font-weight-space-grotesk-semibold: 600;
+
+// Typography Mixin
+@mixin harborn-typography($type) {
+  @if $type == "chapeau" {
+    font-family: $font-family-space-grotesk, $font-family-space-grotesk-fallback;
+    font-size: 6pt;
+    text-transform: uppercase;
+    font-weight: $font-weight-space-grotesk-light;
+  } @else if $type == "heading-dm-serif" {
+    font-family: $font-family-dm-serif, $font-family-dm-serif-fallback;
+    font-size: 36pt;
+    line-height: 44pt;
+    font-weight: normal;
+  } @else if $type == "heading-space-grotesk" {
+    font-family: $font-family-space-grotesk, $font-family-space-grotesk-fallback;
+    font-size: 36pt;
+    line-height: 44pt;
+    font-weight: $font-weight-space-grotesk-semibold;
+  } @else if $type == "intro" {
+    font-family: $font-family-space-grotesk, $font-family-space-grotesk-fallback;
+    font-size: 14pt;
+    line-height: 20pt;
+    font-weight: $font-weight-space-grotesk-regular;
+  } @else if $type == "subheading" {
+    font-family: $font-family-space-grotesk, $font-family-space-grotesk-fallback;
+    font-size: inherit;
+    font-weight: $font-weight-space-grotesk-semibold;
+  } @else if $type == "body-text" {
+    font-family: $font-family-space-grotesk, $font-family-space-grotesk-fallback;
+    font-size: 9pt;
+    line-height: 13.5pt;
+    font-weight: $font-weight-space-grotesk-regular;
+  } @else {
+    // fallback style
+    font-family: $font-family-space-grotesk, $font-family-space-grotesk-fallback;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}

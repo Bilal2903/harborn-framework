@@ -1,0 +1,75 @@
+@use '../harborn-style-guide/harborn-typography' as typography;
+@use '../harborn-style-guide/harborn-colorpalet' as color;
+
+.language-changer {
+  position: relative;
+  border: 1px solid rgba(color.$color-black, 5);
+  border-radius: 12px;
+  padding: 1.2rem 1rem;
+  background-color: rgba(color.$color-white, 0.1);
+  box-shadow: 0 0 5px rgba(color.$color-black, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.language-changer .current-lang {
+  text-decoration: none;
+  color: color.$color-black;
+  @include typography.harborn-typography("body-text");
+  font-size: 16pt;
+  font-weight: typography.$font-weight-space-grotesk-regular;
+  white-space: nowrap;
+  display: block; 
+}
+
+.language-changer .language-options {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: rgba(color.$color-harborn-dark, 0.9);
+  border: 1px solid rgba(color.$color-white, 0.4);
+  border-radius: 4px;
+  min-width: 60px;
+  display: none;
+  z-index: 1010;
+}
+
+.language-changer:hover .language-options {
+  display: block;
+}
+
+.language-changer .language-options li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: color.$color-white;
+  @include typography.harborn-typography("body-text");
+  font-size: 12pt;
+  font-weight: typography.$font-weight-space-grotesk-regular;
+  transition: background-color 0.3s ease;
+}
+
+.language-changer .language-options li a:hover {
+  background-color: rgba(color.$color-white, 0.1);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@media (max-width: 500px) {
+  .language-changer {
+    width: 100%;
+  }
+}

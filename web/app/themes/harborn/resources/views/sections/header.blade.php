@@ -11,16 +11,26 @@
     </button>
 
     <nav class="nav-primary" aria-label="{{ wp_get_nav_menu_name('primary_navigation') }}">
-        {!! wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'nav-primary__list', 'echo' => false]) !!}
+        {!! wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'nav', 'echo' => false]) !!}
     </nav>
 
     <div class="header-actions">
       <div class="search-bar">
-        {!! get_search_form(false) !!}
+        <form role="search" method="get" class="search-form" action="{{ home_url('/') }}">
+          <label>
+            <button type="submit" class="search-submit"></button>
+            <input type="search" class="search-field" placeholder="Search…" value="{{ get_search_query() }}" name="s" />
+          </label>
+        </form>
       </div>
 
-      {{-- Include the language switcher partial --}}
-      @include('partials.language-switcher')
+      <div class="language-changer">
+        <a href="#" class="current-lang">NL</a>
+        <ul class="language-options">
+          <li><a href="?lang=en">EN</a></li>
+          <li><a href="?lang=de">DE</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </header>

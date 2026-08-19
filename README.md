@@ -32,49 +32,56 @@
 
 # Harborn Framework – Sage Starter Framework for Developers
 
-A modern, Docker-based starter kit for WordPress development. Includes automated database import/export, Composer and pnpm support, and a smooth onboarding process for teams.
+## Overview
+A modern Docker-based starter framework for WordPress development. Includes automated database import/export, Composer and pnpm support, and a smooth onboarding process for teams.
 
 ---
 
-## Quick Start
+## Quick Start Guide
 
-1. **Clone the repository**
-   ```sh
-   git clone <your-repo-url>
-   cd harborn-framework
-   ```
-2. **Start Docker (Colima, macOS)**
-   ```sh
-   colima start
-   ```
-3. **Install PHP & JS dependencies**
-   In the project root:
-   ```sh
-   composer install
-   ```
-   In the theme directory:
-   ```sh
-   cd web/app/themes/harborn
-   composer install
-   pnpm install
-   cd ../../../..
-   ```
-4. **Build and start the containers**
-   ```sh
-   docker-compose up --build
-   ```
-5. **Import the database**
-   Using the default `db.sql`:
-   ```sh
-   docker-compose exec php-fpm sh ./entrypoint.sh import
-   ```
-   Or with a custom file:
-   ```sh
-   docker-compose exec php-fpm sh ./entrypoint.sh import yourfile.sql
-   ```
-6. **Open the site**
-   - WordPress: http://<projectname>.local.harborn.com
-   - phpMyAdmin: http://<projectname>-phpmyadmin.local.harborn.com:8081
+### 0. Clone the Repository
+```sh
+git clone <your-repo-url>
+cd harborn-framework
+```
+
+### 1. Start Docker with Colima (macOS)
+```sh
+colima start
+```
+
+### 2. Install PHP & JS Dependencies
+In the project root:
+```sh
+composer install
+```
+
+In the theme directory:
+```sh
+cd web/app/themes/harborn
+composer install 
+pnpm install     
+cd ../../../..
+```
+
+### 3. Build and Start the Containers
+```sh
+docker-compose up --build
+```
+
+### 4. Import the Database
+If you have a `db.sql` file (or one shared by a teammate):
+```sh
+docker-compose exec php-fpm sh ./entrypoint.sh import
+```
+Or for a custom file:
+```sh
+docker-compose exec php-fpm sh ./entrypoint.sh import yourfile.sql
+```
+
+### 5. Access the Site
+- WordPress: http://<project-name>.local.harborn.com
+- phpMyAdmin: http://<project-name>-phpmyadmin.local.harborn.com:8081
 
 ---
 
@@ -86,41 +93,50 @@ A modern, Docker-based starter kit for WordPress development. Includes automated
 - `wp-cli.yml` — WP-CLI configuration
 - `web/` — WordPress core and custom code
 
+## Onboarding New Developers
+1. Clone the repo
+2. Start Colima
+3. Install Composer and pnpm dependencies
+4. Start containers
+5. Import the database
+6. Start developing!
+
+## Troubleshooting
+- SSL errors during import/export? The entrypoint script now automatically handles CA trust.
+- `mysqldump` errors? Rebuild the container after Dockerfile changes.
+- For production: always use SSL and trusted certificates.
+
+## Security Notes
+- The entrypoint script manages CA trust for local development only. Do not use this setup in production without adjustments.
+
 ---
 
-## Testing
+## Testing with Codeception
 
 We use [Codeception](https://codeception.com/) for automated testing.
 
 ### Acceptance & Unit Tests
-- Run all tests:
-  ```sh
-  vendor/bin/codecept run
-  ```
-- Only acceptance tests:
-  ```sh
-  vendor/bin/codecept run acceptance
-  ```
-- Only unit tests:
-  ```sh
-  vendor/bin/codecept run unit
-  ```
-Test results and coverage reports are saved in `tests/_output/`.
-
-### WebDriver for Acceptance Tests
-For acceptance tests, you need a local WebDriver (such as ChromeDriver):
+Run all tests:
 ```sh
-brew install chromedriver
-chromedriver --port=9515
+vendor/bin/codecept run
 ```
+Run only acceptance tests:
+```sh
+vendor/bin/codecept run acceptance
+```
+Run only unit tests:
+```sh
+vendor/bin/codecept run unit
+```
+Test results and coverage reports are saved in the `tests/_output/` directory.
 
 ---
 
 ## Linting (Theme)
 
 ### PHP Linting
-- [Laravel Pint](https://laravel.com/docs/10.x/pint) (for PHP in the theme)
-- PHP_CodeSniffer (PHPCS) (for PHP in the project root)
+- [Laravel Pint](https://laravel.com/docs/10.x/pint)
+- PHP_CodeSniffer (PHPCS)
 
 Lint with Pint (in the theme directory):
 ```sh
@@ -128,32 +144,22 @@ cd web/app/themes/harborn
 pnpm run pint
 ```
 
-Lint with PHPCS (in the project root):
+Lint with PHPCS (in project root):
 ```sh
 composer run phpcs
 ```
 
 ### JavaScript/TypeScript Linting (ESLint)
-We use ESLint for JavaScript/TypeScript in the theme directory:
+In the theme directory:
 ```sh
 pnpm run lint
 ```
 
-> **Tip:** Always run both `composer run phpcs` (PHP) and `pnpm run lint` (JS/TS) locally before committing.
+> **Tip:** Run both `composer run phpcs` (PHP) and `pnpm run lint` (JS/TS) locally before committing.
+
+### Continuous Integration (CI)
+On every commit and pull request, GitHub Actions will automatically run both PHP_CodeSniffer and ESLint checks. If any issues are found, the CI will fail and you will see the results in the GitHub UI.
 
 ---
+For more details, see comments in each file or contact the project maintainer.
 
-## CI/CD
-
-On every commit and pull request, GitHub Actions will automatically run PHP_CodeSniffer and ESLint checks. If any issues are found, the CI will fail and you will see the results in the GitHub UI.
-
----
-
-## Troubleshooting & Security
-- SSL errors during import/export? The entrypoint script manages CA trust for local development.
-- `mysqldump` errors? Rebuild the container after Dockerfile changes.
-- **Production:** Always use SSL and trusted certificates. Adjust the entrypoint script for production use.
-
----
-
-For more details, see comments in the files or contact the maintainer.

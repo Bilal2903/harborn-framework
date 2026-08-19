@@ -17,6 +17,10 @@
       @include('partials.header-mega-menu')
       @include('partials.header-sticky')
 
+      @hasSection('hero')
+        @yield('hero')
+      @endif
+
       <main id="main" class="main">
         @yield('content')
       </main>
